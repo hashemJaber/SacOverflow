@@ -49,18 +49,9 @@
     #login-form {
     }
 
-    .input-labels {
-        @apply block text-sm font-semibold leading-6 text-primary-green-400 text-start;
-    }
-
     #forgot-password {
         @apply text-sm font-semibold leading-6 text-gray-300 text-center;
         @apply hover:text-gray-500 focus:outline-none focus:text-gray-500 transition-all duration-500;
-    }
-
-    .input-forms {
-        @apply mt-2 appearance-none text-primary-green-500 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-primary-green-700 ring-2 ring-primary-green-400;
-        @apply placeholder:text-primary-green-400;
     }
 
     #login-btn {

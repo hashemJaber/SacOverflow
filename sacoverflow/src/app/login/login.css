@@ -1,0 +1,68 @@
+@tailwind base;
+
+@layer base {
+    #login-section {
+        @apply flex justify-center gap-x-2;
+        padding: 0;
+        height: 100vh;
+    }
+
+    #login-content {
+        @apply px-2 py-5 flex flex-col gap-y-5 w-full max-w-sm min-h-fit h-fit;
+        height: 100vh;
+    }
+
+    #login-nav {
+        @apply px-5 flex flex-row gap-4 justify-center;
+    }
+
+    #login-form {
+        @apply flex flex-col gap-y-4;
+    }
+
+    .sign-in-btn {
+        @apply underline decoration-solid underline-offset-4 decoration-primary-green-100 decoration-[3px];
+    }
+
+    .login-nav-links {
+        @apply text-primary-green-400;
+    }
+
+    #icon-content {
+        @apply flex flex-col items-center gap-y-2;
+    }
+
+    #content-title {
+        @apply uppercase text-6xl text-white;
+        text-shadow: 0px 6px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    #icon-text {
+        @apply uppercase text-center text-6xl text-white;
+        text-shadow: 0px 6px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    #icon-description-text {
+        @apply text-gray-600 text-xl font-light mt-3;
+    }
+
+    #login-form {
+    }
+
+    #forgot-password {
+        @apply text-sm font-semibold leading-6 text-gray-300 text-center;
+        @apply hover:text-gray-500 focus:outline-none focus:text-gray-500 transition-all duration-500;
+    }
+
+    #login-btn {
+        @apply w-full px-4 py-2 text-sm font-semibold leading-6 text-center text-primary-green-800 bg-primary-green-200 rounded-md;
+        @apply transition-colors duration-500 transform;
+        @apply hover:bg-primary-green-500 focus:outline-none focus:bg-primary-green-500 hover:text-primary-green-900 focus:text-primary-green-900;
+    }
+
+    #right-content {
+        @apply hidden md:flex flex-col justify-center items-center w-3/4 bg-[#5A8472] gap-y-4 min-h-full;
+        height: 100vh;
+        width: 100vw;
+    }
+}

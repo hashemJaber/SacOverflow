@@ -1,0 +1,30 @@
+@tailwind base;
+
+@layer base {
+    #home-card {
+        /* layout */
+        @apply w-3/4 flex flex-col justify-center items-center min-h-full gap-y-4;
+
+        /* layout padding margining */
+        @apply rounded-md p-4;
+
+        /* card styling */
+        @apply border border-b-4 border-primary-green-500 bg-gray-50;
+    }
+
+    #card-title {
+        /* text */
+        @apply text-2xl md:text-3xl font-normal;
+
+        /* layout */
+        @apply text-center justify-start;
+    }
+
+    .card-content {
+        /* layout */
+        @apply w-full h-full flex flex-col justify-start items-start;
+
+        /* layout padding margining */
+        @apply px-2;
+    }
+}

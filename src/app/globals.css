@@ -25,3 +25,26 @@ body {
         )
         rgb(var(--background-start-rgb));
 }
+
+@layer base {
+    #home-section {
+        @apply mb-6;
+    }
+
+    .page-title {
+        /* text */
+        @apply text-xl md:text-3xl font-bold text-center text-white;
+
+        /* mobile */
+        @apply hidden;
+
+        /* web */
+        @apply md:block;
+        @apply pt-6;
+    }
+
+    #image-content {
+        @apply md:bg-home-image;
+        @apply md:bg-cover md:bg-center;
+    }
+}

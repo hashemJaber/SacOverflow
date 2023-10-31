@@ -1,0 +1,28 @@
+@tailwind base;
+
+@layer base {
+    .status-bar {
+        @apply text-white font-bold text-center py-2 px-6 rounded border border-b-2 border-b-primary-green-900;
+        @apply w-44 rounded-full;
+        
+        /* completed tasks */
+        &.status-Completed {
+            @apply bg-green-900 text-sm;
+        }
+
+        /* in progress tasks */
+        &.status-In-Progress {
+            @apply bg-yellow-400 text-sm;
+        }
+
+        /* tasks that need approval*/
+        &.status-Needs-Approval {
+            @apply bg-blue-500 text-sm;
+        }
+
+        /* tasks that action is needed */
+        &.status-Action-Needed {
+            @apply bg-red-700 text-sm;
+        }
+    }
+}

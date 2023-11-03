@@ -8,7 +8,7 @@ interface StatusBarProps {
 const StatusBar = ({status}: StatusBarProps) => {
 return (
     //generalized component circular
-    <div className={`status-bar status-${status}`} style={{border:"1px solid black"}}>
+    <div className={`status-bar status-${status}`} style={{border:"2px solid black"}}>
         {status}
     </div>
     )

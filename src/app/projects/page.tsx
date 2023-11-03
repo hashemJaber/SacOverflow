@@ -1,23 +1,43 @@
+import SearchBar from "@/components/SearchBar/SearchBar";
+import StatusBar from "@/components/StatusBar/StatusBar";
 import AddCard from "@/components/projects/AddCard";
 import TicketCard from "@/components/projects/TicketCard";
 import React from "react";
 
 const page = () => {
   return (
-    <div className="flex flex-col h-screen max-h-screen">
-      <div>
-        <div className="flex-grow overflow-y-auto bg-white text-default-text">
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 m-4">
-            <AddCard />
-            <TicketCard />
-            <TicketCard />
-            <TicketCard />
-            <TicketCard />
-            <TicketCard />
-            <TicketCard />
-            <TicketCard />
-            <TicketCard />
-            <TicketCard />
+    <div>
+      <div className="flex justify-between flex-row m-1">
+        <div className="flex flex-row">
+          <div className="text-primary-green-600 text-4xl mt-1 font-bold px-2 py-1">
+            Projects
+          </div>
+          <div className="mx-2 my-1">
+            <SearchBar />
+          </div>
+        </div>
+        <div className="flex flex-row justify-between">
+          <StatusBar status="In-Progress" />
+          <StatusBar status="Completed" />
+          <StatusBar status="Needs-Approval" />
+          <StatusBar status="Action-Needed" />
+        </div>
+      </div>
+      <div className="flex flex-col h-screen max-h-screen">
+        <div>
+          <div className="flex-grow overflow-y-auto bg-white text-default-text">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 m-4">
+              <AddCard />
+              <TicketCard />
+              <TicketCard />
+              <TicketCard />
+              <TicketCard />
+              <TicketCard />
+              <TicketCard />
+              <TicketCard />
+              <TicketCard />
+              <TicketCard />
+            </div>
           </div>
         </div>
       </div>

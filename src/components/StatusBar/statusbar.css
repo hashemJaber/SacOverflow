@@ -8,21 +8,26 @@
         /* completed tasks */
         &.status-Completed {
             @apply bg-green-900 text-sm;
+            margin: 8px;
         }
 
         /* in progress tasks */
         &.status-In-Progress {
             @apply bg-yellow-400 text-sm;
+            margin: 8px;
+            margin-left: 50px;
         }
 
         /* tasks that need approval*/
         &.status-Needs-Approval {
             @apply bg-blue-500 text-sm;
+            margin: 8px;
         }
 
         /* tasks that action is needed */
         &.status-Action-Needed {
             @apply bg-red-700 text-sm;
+            margin: 8px;
         }
     }
 }

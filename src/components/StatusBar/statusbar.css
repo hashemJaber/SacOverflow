@@ -1,33 +1,29 @@
 @tailwind base;
 
 @layer base {
-    .status-bar {
-        @apply text-white font-bold text-center py-2 px-6 rounded border border-b-2 border-b-primary-green-900;
-        @apply w-44 rounded-full;
-        
-        /* completed tasks */
-        &.status-Completed {
-            @apply bg-green-900 text-sm;
-            margin: 8px;
-        }
-
-        /* in progress tasks */
-        &.status-In-Progress {
-            @apply bg-yellow-400 text-sm;
-            margin: 8px;
-            margin-left: 50px;
-        }
-
-        /* tasks that need approval*/
-        &.status-Needs-Approval {
-            @apply bg-blue-500 text-sm;
-            margin: 8px;
-        }
-
-        /* tasks that action is needed */
-        &.status-Action-Needed {
-            @apply bg-red-700 text-sm;
-            margin: 8px;
-        }
+  .status-bar {
+    /* completed tasks */
+    &.status-Completed {
+      @apply bg-green-800 hover:bg-green-900 text-sm;
+      margin: 8px;
     }
+
+    /* in progress tasks */
+    &.status-In-Progress {
+      @apply bg-yellow-400 text-sm hover:bg-yellow-500;
+      margin: 8px;
+    }
+
+    /* tasks that need approval*/
+    &.status-Needs-Approval {
+      @apply bg-blue-500 text-sm hover:bg-blue-600;
+      margin: 8px;
+    }
+
+    /* tasks that action is needed */
+    &.status-Action-Needed {
+      @apply bg-red-700 text-sm hover:bg-red-800;
+      margin: 8px;
+    }
+  }
 }

@@ -1,0 +1,42 @@
+@tailwind base;
+
+@layer base {
+    #side-navbar {
+        /* Mobile props */
+        @apply hidden overflow-y-scroll;
+
+        /* Default Props */
+        @apply text-gray-400 rounded items-center border border-r-primary-green-100;
+
+        /* Desktop props */
+        @screen md {
+            @apply flex flex-col w-1/5 justify-between min-h-screen;
+        }
+    }
+
+    .sidenav-item {
+        /* Layout props */
+        @apply flex items-center gap-x-2 self-stretch justify-between p-2 bg-inherit;
+
+        /* Styling props */
+        @apply rounded transition-all ease-in-out duration-300;
+
+        /* Active or hover props */
+        @apply hover:bg-gray-300 hover:text-primary-green-700 focus:bg-gray-300 focus:text-primary-green-700;
+
+        /* active props */
+        &.active {
+            @apply bg-gray-300 text-primary-green-700;
+        }
+
+        .navitem-text {
+            @apply text-sm font-bold capitalize;
+        }
+    }
+
+    /* navigation items */
+    .navigation-controls-container,
+    .account-controls-container {
+        @apply flex flex-col items-center gap-y-2 w-4/5 mt-5;
+    }
+}

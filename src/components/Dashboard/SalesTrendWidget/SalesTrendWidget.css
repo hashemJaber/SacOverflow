@@ -1,0 +1,93 @@
+@tailwind base;
+
+@layer base {
+    .trends-widget {
+        /* styling */
+        @apply rounded-md bg-primary-green-two-main text-white h-full;
+
+        /* layouts */
+        @apply flex flex-col items-stretch justify-center p-4;
+
+        /* no data */
+        .trends-widget-no-data-text {
+            /* styling */
+            @apply text-2xl font-medium;
+
+            /* layouts */
+            @apply flex items-stretch justify-start h-full;
+        }
+
+        /* title of widget */
+        .trends-widget-title {
+            /* styling */
+            @apply text-2xl font-bold;
+
+            /* layouts */
+            @apply mb-4 items-stretch;
+        }
+
+        .trends-widget-percentage {
+            /* layout */
+            @apply flex flex-col items-start justify-center gap-y-1;
+
+            .trends-widget-percentage-value {
+                /* styling */
+                @apply text-4xl font-bold;
+
+                /* layouts */
+                @apply flex justify-start gap-x-1;
+
+                .percentage-sign {
+                    @apply self-start text-xl font-bold;
+                }
+            }
+
+            .trends-widget-percentage-text {
+                /* styling */
+                @apply text-sm font-thin;
+
+                @apply text-gray-300;
+            }
+        }
+
+        /* am charts double line chart */
+        .double-chart-container {
+            /* layout */
+            @apply flex-1 h-24 min-h-[100px];
+        }
+    }
+
+    #costBreakdownSection {
+        /* styling */
+        @apply rounded-md bg-primary-green-two-main text-white;
+
+        /* @apply items-stretch; */
+
+        /* layouts */
+        @apply flex flex-col items-start justify-center p-4;
+
+        /* every category from sales (top 3) */
+        .category {
+            /* styling */
+            @apply text-sm font-light;
+
+            @apply min-h-[50px];
+
+            /* layout */
+            @apply flex items-stretch justify-between gap-x-4 w-full;
+
+            & > span {
+                /* make items stretch */
+                @apply flex-1;
+
+                /* center */
+                @apply flex items-center justify-center;
+            }
+
+            /* single individual AM charts */
+            .chart-container {
+                @apply flex-1 h-24;
+            }
+        }
+    }
+}

@@ -1,0 +1,97 @@
+@tailwind base;
+
+@layer base {
+    /* Section side of navbar; utilizing layout */
+    .desktop-container {
+        @apply md:flex flex-col p-5 gap-y-10 w-screen hidden min-h-full max-w-[calc(100%-250px)];
+    }
+
+    .mobile-container {
+        @apply flex flex-col p-5 gap-y-10 w-full max-w-full min-h-screen md:hidden;
+
+        #summary-gauge-arc {
+            @apply items-stretch w-full;
+            border: 1px solid red;
+        }
+    }
+    .page-title {
+        @apply block text-3xl font-semibold text-gray-600  self-start;
+    }
+
+    /* Greeting user section */
+    #dashboard-greeting {
+        @apply text-2xl font-bold text-primary-green-700;
+
+        .username {
+            @apply capitalize;
+        }
+    }
+
+    /* top section of charts */
+    #dashboard-charts {
+        @apply flex flex-row gap-x-5 w-full items-stretch;
+        /* height */
+        /* @apply h-2/6; */
+
+        /* bottom 2/3 of charts */
+        .revenues-chart,
+        .spending-table {
+            @apply w-5/12 h-full;
+        }
+
+        .spending-chart {
+            @apply w-2/12;
+        }
+    }
+
+    .col-charts {
+        @apply flex flex-col;
+    }
+
+    /* bottom charts (project activity, and  */
+    #dashboard-charts-recent-activity {
+        @apply flex flex-row gap-x-5 items-stretch;
+        /* @apply h-3/6; */
+
+        .earnings-sales-container {
+            @apply flex flex-col items-stretch gap-y-2;
+            @apply w-2/6;
+            /* border: 1px solid green; */
+
+            .total-earnings-container {
+                @apply flex flex-col items-stretch gap-y-4 h-2/6;
+                @apply w-full;
+            }
+        }
+
+        .project-activity {
+            @apply w-4/6 self-stretch;
+        }
+    }
+
+    .spending-chart-container {
+        @apply bg-gray-100 rounded-lg shadow-primary-green-400 shadow-sm border-b border-primary-green-400;
+
+        @apply flex flex-col items-stretch;
+        @apply min-h-[100px];
+    }
+
+    .charts-title {
+        @apply text-sm md:text-lg font-bold truncate;
+
+        &.overall-spending {
+            @apply md:text-lg;
+        }
+    }
+
+    /* LAYOUT CSS */
+
+    /* hamburger icon to toggle sidebar */
+    .overlay-icon {
+        @apply w-6 h-6 fill-primary-green-200 absolute top-1 right-1 cursor-pointer md:hidden;
+    }
+
+    .chart-titles {
+        @apply flex justify-between items-center w-full;
+    }
+}

@@ -17,7 +17,7 @@ const NavigationItems = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="navitem-icon"
             >
                 <path
                     strokeLinecap="round"
@@ -37,7 +37,7 @@ const NavigationItems = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="navitem-icon"
             >
                 <path
                     strokeLinecap="round"
@@ -57,7 +57,7 @@ const NavigationItems = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="navitem-icon"
             >
                 <path
                     strokeLinecap="round"
@@ -77,7 +77,7 @@ const NavigationItems = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="navitem-icon"
             >
                 <path
                     strokeLinecap="round"
@@ -97,7 +97,7 @@ const NavigationItems = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="navitem-icon"
             >
                 <path
                     strokeLinecap="round"
@@ -121,7 +121,7 @@ const AccountControlItems = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="navitem-icon"
             >
                 <path
                     strokeLinecap="round"
@@ -146,7 +146,7 @@ const AccountControlItems = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="navitem-icon"
             >
                 <path
                     strokeLinecap="round"
@@ -159,53 +159,76 @@ const AccountControlItems = [
     },
 ];
 
-const SideNavbar = () => {
+const SideNavbar = ({ show, setter }) => {
     const pathname = usePathname();
+
+    // const appendShown = show ? 'ml-0' : 'ml-[-250px] md:ml-0';
+    const appendShown = show ? 'disabled' : '';
+
+    // TODO: implement modal overlay so if user clicks outside of sidebar, it closes
+    const ModalOverlay = () => {
+        <div
+            className={`model-overlay`}
+            onClick={() => {
+                setter((oldVal: boolean) => !oldVal);
+            }}
+        />;
+    };
+
     return (
-        <nav id="side-navbar">
-            {/* navigation controls */}
-            <div className="navigation-controls-container">
-                {/* navigation items */}
-                {NavigationItems.map((item, index) => {
-                    return (
-                        <Link
-                            className={`sidenav-item ${
-                                pathname === item.path ? 'active' : ''
-                            }`}
-                            href={`${item.path}`}
-                            key={index}
-                        >
-                            {/* icon */}
-                            {item.icon}
+        <>
+            <nav className={`side-navbar ${appendShown}`}>
+                {/* navigation controls */}
+                <div className="navigation-controls-container">
+                    {/* navigation items */}
+                    {NavigationItems.map((item, index) => {
+                        return (
+                            <Link
+                                className={`sidenav-item ${
+                                    pathname === item.path ? 'active' : ''
+                                }`}
+                                href={`${item.path}`}
+                                key={index}
+                            >
+                                {/* icon */}
+                                {item.icon}
 
-                            {/* text */}
-                            <span className="navitem-text">{item.name}</span>
-                        </Link>
-                    );
-                })}
-            </div>
+                                {/* text */}
+                                <span className="navitem-text">
+                                    {item.name}
+                                </span>
+                            </Link>
+                        );
+                    })}
+                </div>
 
-            {/* account controls */}
-            <div className="account-controls-container">
-                {AccountControlItems.map((item, index) => {
-                    return (
-                        <Link
-                            className={`sidenav-item ${
-                                pathname === item.path ? 'active' : ''
-                            }`}
-                            href={`${item.path}`}
-                            key={index}
-                        >
-                            {/* icon */}
-                            {item.icon}
+                {/* account controls */}
+                <div className="account-controls-container">
+                    {AccountControlItems.map((item, index) => {
+                        return (
+                            <Link
+                                className={`sidenav-item ${
+                                    pathname === item.path ? 'active' : ''
+                                }`}
+                                href={`${item.path}`}
+                                key={index}
+                            >
+                                {/* icon */}
+                                {item.icon}
 
-                            {/* text */}
-                            <span className="navitem-text">{item.name}</span>
-                        </Link>
-                    );
-                })}
-            </div>
-        </nav>
+                                {/* text */}
+                                <span className="navitem-text">
+                                    {item.name}
+                                </span>
+                            </Link>
+                        );
+                    })}
+                </div>
+            </nav>
+
+            {/* display ModelOverlay here */}
+            {show ? <></> : <></>}
+        </>
     );
 };
 

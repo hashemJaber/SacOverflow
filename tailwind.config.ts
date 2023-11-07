@@ -45,6 +45,9 @@ const config: Config = {
             ringWidth: {
                 '3': '3px',
             },
+            fontSize: {
+                xss: ['0.625rem', { lineHeight: '.8rem' }],
+            },
         },
     },
     plugins: [],

@@ -1,0 +1,40 @@
+@tailwind base;
+
+@layer base {
+    .total-earning-container {
+        @apply flex flex-col items-start p-5 gap-2 bg-slate-50 shadow-2xl rounded-lg self-stretch;
+    }
+}
+.earning-header {
+    @apply flex justify-between items-center w-full;
+}
+
+.earning-title {
+    @apply font-sans font-normal text-xl leading-4;
+}
+
+.earning-format {
+    @apply flex items-baseline flex-wrap;
+}
+
+.earning-value {
+    @apply font-sans font-extrabold text-3xl;
+}
+
+.earning-percentage {
+    @apply text-sm font-normal flex items-baseline ml-2;
+    /* Wrapping to next line */
+    @apply break-words;
+}
+
+.earning-percentage-positive {
+    @apply text-green-600;
+}
+
+.earning-percentage-negative {
+    @apply text-red-600;
+}
+
+.earning-comparison {
+    @apply font-sans text-sm text-gray-400;
+}

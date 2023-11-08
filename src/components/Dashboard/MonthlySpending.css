@@ -1,0 +1,43 @@
+@tailwind base;
+
+@layer base {
+    .monthly-spending-container {
+    }
+
+    .spending-container {
+        @apply flex justify-center bg-primary-green-700 shadow-2xl p-5 rounded-lg h-full;
+    }
+
+    ul {
+        @apply w-full h-full;
+    }
+
+    .spending-list-item {
+        /* responsive grid template. first, third, fourth take up as much space as needed, second uses remaining space */
+        @apply grid grid-cols-[auto,1fr,auto,auto] gap-4 grid-flow-col py-2.5;
+    }
+
+    .category {
+        @apply text-white col-span-2 whitespace-nowrap overflow-hidden overflow-ellipsis;
+    }
+
+    .amount {
+        @apply text-gray-400 col-span-1 text-center;
+    }
+
+    .total {
+        @apply text-white col-span-1 text-center;
+    }
+
+    .trend-indicate {
+        @apply text-green-500 col-span-1 flex items-center justify-center;
+    }
+
+    .trend-up {
+        @apply text-green-500;
+    }
+
+    .trend-down {
+        @apply text-red-500;
+    }
+}

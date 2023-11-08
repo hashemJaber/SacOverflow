@@ -7,6 +7,7 @@ import MonthlySpending from '@/components/Dashboard/MonthlySpend';
 import SalesTrendWidget from '@/components/Dashboard/SalesTrendWidget/SalesTrendWidget';
 import { default as RevenueChart } from '@/components/Dashboard/revenue_linechart/linechart';
 import { default as TotalEarningWidget } from '@/components/Dashboard/TotalEarning';
+import ArcGaugeChart from '@/components/Dashboard/ArcGaugeChart/ArcGaugeChart';
 
 const DashboardPage = () => {
     // TODO: reference backend for logged in user from username
@@ -60,7 +61,10 @@ const DashboardPage = () => {
             <div className="mobile-container">
                 <span className="page-title">Finance</span>
 
-                <div id="summary-gauge-arc"></div>
+                <div id="summary-gauge-arc">
+                    <ArcGaugeChart id="arc-chart" />
+                </div>
+                <br />
 
                 <div className="total-earnings-container">
                     <TotalEarningWidget />

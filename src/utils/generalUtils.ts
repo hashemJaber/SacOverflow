@@ -1,3 +1,9 @@
+/**
+ * General utility methods.
+ *
+ * @module "src/utils/generalUtils.ts"
+ */
+
 // generate a random hex color
 // https://stackoverflow.com/questions/1484506/random-color-generator
 /**
@@ -6,7 +12,9 @@
  * @returns a random hex color
  */
 export const generateRandomHexColor = (): string => {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+	return (
+		'#' + (((1 << 24) * Math.random()) | 0).toString(16).padStart(6, '0')
+	);
 };
 
 /**
@@ -17,10 +25,10 @@ export const generateRandomHexColor = (): string => {
  * @returns a string representation of the percentage difference between the two amounts (rounded to 2 decimals)
  */
 export const calculatePercentageDifference = (
-    amount: number,
-    previousAmount: number
+	amount: number,
+	previousAmount: number,
 ) => {
-    let percentage = amount / previousAmount;
-    // return percentage to 2 decimal places
-    return percentage.toFixed(2);
+	const percentage = amount / previousAmount;
+	// return percentage to 2 decimal places
+	return percentage.toFixed(2);
 };

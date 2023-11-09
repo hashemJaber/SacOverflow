@@ -10,76 +10,81 @@ import { default as TotalEarningWidget } from '@/components/Dashboard/TotalEarni
 import ArcGaugeChart from '@/components/Dashboard/ArcGaugeChart/ArcGaugeChart';
 
 const DashboardPage = () => {
-    // TODO: reference backend for logged in user from username
-    const username = 'user';
+	// TODO: reference backend for logged in user from username
+	const username = 'user';
 
-    return (
-        <>
-            <div className="desktop-container">
-                <div id="dashboard-greeting">
-                    <h1>
-                        Welcome, <span className="username">{username}</span>
-                    </h1>
-                </div>
+	const salesTrendData = {
+		filterType: 'week',
+		className: 'sales-trend-container',
+	};
 
-                {/* Section for charts  */}
-                <div id="dashboard-charts">
-                    <div className="revenues-chart col-charts">
-                        <div className="charts-title">
-                            <br />
-                        </div>
-                        <RevenueChart className="spending-chart-container" />
-                    </div>
-                    <div className="spending-chart col-charts">
-                        <div className="charts-title overall-spending">
-                            Overall Spending
-                        </div>
-                        <CategoryPieChart className="spending-chart-container" />
-                    </div>
-                    <div className="spending-table col-charts">
-                        <div className="charts-title">Monthly Spending</div>
-                        <MonthlySpending />
-                    </div>
-                </div>
+	return (
+		<>
+			<div className="desktop-container">
+				<div id="dashboard-greeting">
+					<h1>
+						Welcome, <span className="username">{username}</span>
+					</h1>
+				</div>
 
-                {/* Section for recent activity */}
-                <div id="dashboard-charts-recent-activity">
-                    <div className="earnings-sales-container">
-                        <div className="total-earnings-container">
-                            <TotalEarningWidget />
-                        </div>
-                        <SalesTrendWidget />
-                    </div>
+				{/* Section for charts  */}
+				<div id="dashboard-charts">
+					<div className="revenues-chart col-charts">
+						<div className="charts-title">
+							<br />
+						</div>
+						<RevenueChart className="spending-chart-container" />
+					</div>
+					<div className="spending-chart col-charts">
+						<div className="charts-title overall-spending">
+							Overall Spending
+						</div>
+						<CategoryPieChart className="spending-chart-container" />
+					</div>
+					<div className="spending-table col-charts">
+						<div className="charts-title">Monthly Spending</div>
+						<MonthlySpending />
+					</div>
+				</div>
 
-                    {/* Project activity log content */}
-                    <div className="project-activity">
-                        <ProjectActivity />
-                    </div>
-                </div>
-            </div>
+				{/* Section for recent activity */}
+				<div id="dashboard-charts-recent-activity">
+					<div className="earnings-sales-container">
+						<div className="total-earnings-container">
+							<TotalEarningWidget />
+						</div>
+						<SalesTrendWidget {...salesTrendData} />
+					</div>
 
-            <div className="mobile-container">
-                <span className="page-title">Finance</span>
+					{/* Project activity log content */}
+					<div className="project-activity">
+						<ProjectActivity />
+					</div>
+				</div>
+			</div>
 
-                <div id="summary-gauge-arc">
-                    <ArcGaugeChart id="arc-chart" />
-                </div>
-                <br />
+			<div className="mobile-container">
+				<span className="page-title">Finance</span>
 
-                <div className="total-earnings-container">
-                    <TotalEarningWidget />
-                </div>
-                <div className="spending-table">
-                    <MonthlySpending />
-                </div>
+				<div id="summary-gauge-arc">
+					<ArcGaugeChart id="arc-chart" />
+				</div>
+				<br />
 
-                {/* Project activity log content */}
-                <div className="project-activity">
-                    <ProjectActivity />
-                </div>
-            </div>
-        </>
-    );
+				<div className="total-earnings-container">
+					<TotalEarningWidget />
+				</div>
+				<div className="spending-table">
+					<MonthlySpending />
+				</div>
+
+				{/* Project activity log content */}
+				<div className="project-activity">
+					<ProjectActivity />
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default DashboardPage;

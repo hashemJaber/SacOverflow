@@ -14,18 +14,54 @@ body.active-modal {
 	align-items: flex-start;
 }
 
-.popup-content {
-	background: #c79292;
+.popup-image {
+	width: 70px;
+	height: 70px;
+	margin-right: 20px;
+}
+
+.popup-content-inner {
+	display: flex; /* Use flex to align image and text */
+	align-items: center; /* Center vertically */
+}
+
+.popup-content-inner img {
+	margin-right: 20px; /* Add space between image and text */
+}
+
+.popup-error {
+	background: #e6d0d0;
+	color: #d13131;
 	padding: 14px 28px;
 	border-radius: 10px;
 	max-width: 600px;
 	min-width: 300px;
-	margin-top: 100px;
-	position: relative;
+	height: 100px; /* Adjust the height to make it shorter */
+	margin: auto;
+	top: -600px; /* Adjust this value to control the vertical position closer to the top */
+	transform: translateX(-50%); /* Center the popup horizontally */
+	position: fixed; /* To ensure it's centered relative to the viewport */
+	left: 50%; /* Center horizontally */
+}
+
+.popup-success {
+	background: #c8d9cf;
+	color: #01883e;
+	padding: 14px 28px;
+	border-radius: 10px;
+	max-width: 600px;
+	min-width: 300px;
+	height: 100px; /* Adjust the height to make it shorter */
+	margin: auto;
+	top: -600px; /* Adjust this value to control the vertical position closer to the top */
+	transform: translateX(-50%); /* Center the popup horizontally */
+	position: fixed; /* To ensure it's centered relative to the viewport */
+	left: 50%; /* Center horizontally */
 }
 
 .popup-close {
 	position: absolute;
+	color: rgb(44, 44, 44);
 	top: 5px;
 	right: 5px;
 	padding: 5px 7px;

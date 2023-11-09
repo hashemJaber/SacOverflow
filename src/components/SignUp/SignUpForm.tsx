@@ -10,6 +10,8 @@ function SignUpForm() {
 	const [lastName, setLastName] = useState('');
 	const [userName, setUserName] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+	const [passwordMatch, setPasswordMatch] = useState(true);
+
 	return (
 		<form
 			action=""
@@ -77,12 +79,17 @@ function SignUpForm() {
 				type="password"
 				id="confirmPassword"
 				placeholder="Enter Password Again"
-				value={
-					confirmPassword === password ? confirmPassword : password
-				}
-				onChange={e => setConfirmPassword(e.target.value)}
+				value={confirmPassword}
+				onChange={e => {
+					setConfirmPassword(e.target.value);
+					setPasswordMatch(e.target.value === password);
+				}}
 				required={true}
 			/>
+
+			<div className="text-red-500">
+				{passwordMatch ? '' : 'Passwords do not match'}
+			</div>
 
 			{/* <!-- btn for signup --> */}
 			<div className="">

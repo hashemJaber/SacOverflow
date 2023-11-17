@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+	"extends": ["next/core-web-vitals"],
+	"rules": {
+		"no-unused-vars": "warn",
+		"no-console": "warn",
+		"no-unreachable": "warn",
+		"consistent-return": "error",
+		"curly": ["error", "all"],
+		"default-case": "error",
+		"default-case-last": "error",
+
+		// meh this one below
+		"eqeqeq": ["error", "always"],
+		"prefer-const": "warn"
+	}
 }

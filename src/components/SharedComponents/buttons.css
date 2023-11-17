@@ -1,37 +1,37 @@
 @tailwind base;
 
 @layer base {
-    .btn {
-        /* base component */
-        @apply text-white font-bold text-center py-2 px-6 rounded border border-b-2 border-b-primary-green-900;
-        @apply mr-3 md:mr-0 drop-shadow-xl;
-        @apply transition duration-300 ease-in-out;
+	.btn {
+		/* base component */
+		@apply text-white font-bold text-center py-2 px-6 rounded border border-b-2 border-b-primary-green-900;
+		@apply mr-3 md:mr-0 drop-shadow-xl;
+		@apply transition duration-300 ease-in-out;
 
-        /* Larger btns */
-        &.btn-large {
-            @apply text-lg rounded-lg;
-        }
-        /* Smaller btns */
-        &.btn-small {
-            @apply text-sm rounded;
-        }
+		/* Larger btns */
+		&.btn-large {
+			@apply text-lg rounded-lg;
+		}
+		/* Smaller btns */
+		&.btn-small {
+			@apply text-sm rounded;
+		}
 
-        /* Primary - Lighter btns */
-        &.btn-primary {
-            /* base component */
-            @apply bg-primary-green-500 border border-primary-green-400;
+		/* Primary - Lighter btns */
+		&.btn-primary {
+			/* base component */
+			@apply bg-primary-green-500 border border-primary-green-400;
 
-            /* Hover/Focus states */
-            @apply hover:bg-primary-green-400 focus:ring-4 focus:outline-none focus:ring-primary-green-400;
-        }
+			/* Hover/Focus states */
+			@apply hover:bg-primary-green-400 focus:ring-4 focus:outline-none focus:ring-primary-green-400;
+		}
 
-        /* Secondary - Darker btns */
-        &.btn-secondary {
-            /* base component */
-            @apply bg-primary-green-800 border border-primary-green-700;
+		/* Secondary - Darker btns */
+		&.btn-secondary {
+			/* base component */
+			@apply bg-primary-green-800 border border-primary-green-700;
 
-            /* Hover/Focus states */
-            @apply hover:bg-primary-green-900 focus:ring-4 focus:outline-none focus:ring-primary-green-900;
-        }
-    }
+			/* Hover/Focus states */
+			@apply hover:bg-primary-green-900 focus:ring-4 focus:outline-none focus:ring-primary-green-900;
+		}
+	}
 }

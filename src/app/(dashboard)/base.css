@@ -1,0 +1,10 @@
+@tailwind base;
+
+@layer base {
+	/* LAYOUT CSS */
+
+	/* hamburger icon to toggle sidebar */
+	.overlay-icon {
+		@apply w-6 h-6 fill-primary-green-200 absolute top-1 right-1 cursor-pointer md:hidden;
+	}
+}

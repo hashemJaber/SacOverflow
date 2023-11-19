@@ -41,7 +41,7 @@ function Dropdown() {
 					leaveFrom="transform opacity-100 scale-100"
 					leaveTo="transform opacity-0 scale-95"
 				>
-					<Listbox.Options className="absolute max-h-60 overflow-auto">
+					<Listbox.Options className="absolute max-h-60 overflow-auto bg-white rounded-md -left-4">
 						{languages.map(language => (
 							<Listbox.Option
 								key={language.id}
@@ -53,7 +53,7 @@ function Dropdown() {
 											language.name || active
 											? 'font-bold '
 											: ''
-									} cursor-default select-none relative`
+									} dropdown-item`
 								}
 							>
 								{language.name}

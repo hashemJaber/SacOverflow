@@ -1,4 +1,3 @@
-// 'use client';
 // CSS imports
 import './DashboardPage.css';
 
@@ -9,18 +8,14 @@ import SalesTrendWidget from '@/components/Dashboard/SalesTrendWidget/SalesTrend
 import { default as RevenueChart } from '@/components/Dashboard/revenue_linechart/linechart';
 import { default as TotalEarningWidget } from '@/components/Dashboard/TotalEarning';
 import ArcGaugeChart from '@/components/Dashboard/ArcGaugeChart/ArcGaugeChart';
-import { readUser } from '@/lib/actions';
+import { getUserInformation } from '@/lib/actions';
 import DashboardGreeting from '@/app/(dashboard)/dashboard/DashboardGreeting';
 
 const DashboardPage = async () => {
 	// TODO: reference backend for logged in user from username
-	let username = 'user';
-
 	// retrieve client info
-	const {
-		data: { user },
-	} = await readUser();
-	username = user?.user_metadata?.name || '';
+	const userInfo = await getUserInformation();
+	const username = userInfo?.name || '';
 
 	const salesTrendData = {
 		filterType: 'week',
@@ -35,9 +30,7 @@ const DashboardPage = async () => {
 				{/* Section for charts  */}
 				<div id="dashboard-charts">
 					<div className="revenues-chart col-charts">
-						<div className="charts-title">
-							<br />
-						</div>
+						<div className="charts-title">Revenue Chart</div>
 						<RevenueChart className="spending-chart-container" />
 					</div>
 					<div className="spending-chart col-charts">

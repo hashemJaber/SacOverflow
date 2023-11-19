@@ -11,3 +11,19 @@ export async function readUser() {
 
 	return supabase.auth.getUser();
 }
+
+export async function getUserInformation() {
+	const supabase = await createSupbaseServerClientReadOnly();
+
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
+	// get database information
+	const { data: resp, error } = await supabase
+		.from('user')
+		.select('id, username, email, name, image')
+		.eq('id', user?.id)
+		.single();
+	return resp;
+}

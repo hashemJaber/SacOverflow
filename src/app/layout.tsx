@@ -3,8 +3,9 @@ import { Poppins } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar/Navbar';
 import { readUser } from '@/lib/actions';
-import { createSupbaseServerClientReadOnly } from '@/lib/supabase/server';
-import { revalidatePath } from 'next/cache';
+
+import { Suspense } from 'react';
+import Loader from './loading';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600'] });
 
@@ -20,8 +21,6 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }) {
 	// get supabase client
-	// const supabase = await createSupbaseServerClientReadOnly();
-	// retrieve client info
 	const {
 		data: { user },
 	} = await readUser();
@@ -30,7 +29,7 @@ export default async function RootLayout({
 		<html lang="en">
 			<body className={poppins.className}>
 				<Navbar session={user || undefined} />
-				{children}
+				<Suspense fallback={<Loader />}>{children}</Suspense>
 			</body>
 		</html>
 	);

@@ -27,4 +27,9 @@
 	}
 
 	/* Brand Hero Section Styling END */
+
+	/* Drop down styling */
+	.dropdown-item {
+		@apply cursor-default select-none relative bg-white p-2 transition-all ease-in duration-200 hover:bg-gray-100 rounded-md;
+	}
 }

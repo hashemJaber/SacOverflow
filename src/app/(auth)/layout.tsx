@@ -15,14 +15,10 @@ const lexendGiga = Lexend_Giga({ subsets: ['latin'] });
 
 export default async function DashboardLayoutPage({ children }: Props) {
 	// if the user is logged in redirect to dashboard
-	// const supabase = await createSupbaseServerClientReadOnly();
-	// const { data, error } = await supabase.auth.getUser();
-	// const { user } = data;
 	const {
 		data: { user },
 	} = await readUser();
 
-	// console.loG;
 	if (user) {
 		// redirect to dashboard
 		return redirect('/dashboard');
@@ -31,7 +27,6 @@ export default async function DashboardLayoutPage({ children }: Props) {
 	return (
 		<section id="login-section">
 			<div id="login-content">
-				{/* <!-- login-nav section --> */}
 				{/* Language, Sign In, & Register Links */}
 				<LanguageAuthHeader />
 				{/* Image with Product Logo */}

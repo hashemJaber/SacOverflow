@@ -1,50 +1,112 @@
-import React from 'react';
-import Image from 'next/image';
 import './PopUp.css';
 
-const PopUp = ({ isOpen, onClose, type, imageSrc }) => {
-	if (!isOpen) {return null;}
+interface PopUpProps {
+	isOpen: boolean;
+	onClose: () => void;
+	type: 'error' | 'success' | string;
+	msg: string;
+}
 
-	const getPopupClassName = () => {
-		if (type === 'error') {
-			return 'popup-error';
-		} else if (type === 'success') {
-			return 'popup-success';
-		}
-		return 'popup-default';
-	};
+const PopUp = ({ isOpen, onClose, type, msg }: PopUpProps) => {
+	// if popup shouldnt be open then return null
+	let imgSrc;
+
+	switch (type) {
+		case 'error':
+			imgSrc = (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth="1.5"
+					stroke="currentColor"
+					className="w-7 h-7"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+					/>
+				</svg>
+			);
+			break;
+		case 'success':
+			imgSrc = (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth="1.5"
+					stroke="currentColor"
+					className="w-7 h-7"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+					/>
+				</svg>
+			);
+			break;
+
+		default:
+			imgSrc = (
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth="1.5"
+					stroke="currentColor"
+					className="w-6 h-6"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+					/>
+				</svg>
+			);
+			type = 'info';
+			break;
+	}
 
 	const getTitle = () => {
-		return type === 'error' ? 'Invalid input.' : 'Success!';
-	};
-
-	const getDetails = () => {
-		return type === 'error' ? 'Please try again.' : 'Welcome aboard!';
+		switch (type) {
+			case 'error':
+				return 'Something went wrong.';
+			case 'success':
+				return 'Success!';
+			default:
+				return 'Info';
+		}
 	};
 
 	return (
-		<div className={`popup-overlay ${getPopupClassName()}`}>
-			<div className="popup-content">
-				<button
-					className="popup-close"
-					onClick={onClose}
+		<div className={`popup-container ${type} ${isOpen ? '' : 'hide'}`}>
+			<button
+				className="popup-close"
+				onClick={onClose}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth="2.5"
+					stroke="currentColor"
+					className="w-4 h-4"
 				>
-					X
-				</button>
-				<div className="popup-content-inner">
-					<Image
-						src={imageSrc} // Use the image source passed as a prop
-						alt={type === 'error' ? 'Error Icon' : 'Success Icon'}
-						width={100} // Set the width as needed
-						height={100} // Set the height as needed
-						className="popup-image"
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M6 18L18 6M6 6l12 12"
 					/>
-					<p>
-						<h1>
-							<strong>{getTitle()}</strong>
-						</h1>
-						{getDetails()}
-					</p>
+				</svg>
+			</button>
+			<div className="flex gap-x-4">
+				<div className="popup-icon self-center">{imgSrc}</div>
+				<div className="popup-content">
+					<p className="popup-title">{getTitle()}</p>
+					<p className="popup-details">{msg}</p>
 				</div>
 			</div>
 		</div>

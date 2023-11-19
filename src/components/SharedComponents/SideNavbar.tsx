@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 
 // CSS imports
 import './SideNavbar.css';
+import { createBrowserClient } from '@supabase/ssr';
 
 // first half of nav items
 const NavigationItems = [
@@ -142,6 +143,16 @@ const AccountControlItems = [
 const SideNavbar = ({ show, setter }) => {
 	const pathname = usePathname();
 
+	// NOTE: Advise on this, if want to do this, or use server side ??
+	const SignOut = async () => {
+		const supabase = await createBrowserClient(
+			process.env.NEXT_PUBLIC_SUPABASE_URL!,
+			process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+		);
+		const { error } = await supabase.auth.signOut();
+		window.location.reload();
+	};
+
 	const appendShown = show ? '' : 'disabled';
 
 	// TODO: implement modal overlay so if user clicks outside of sidebar, it closes
@@ -184,6 +195,25 @@ const SideNavbar = ({ show, setter }) => {
 				{/* account controls */}
 				<div className="account-controls-container">
 					{AccountControlItems.map((item, index) => {
+						if (item.name.toLowerCase() === 'logout') {
+							return (
+								<button
+									className={`sidenav-item ${
+										pathname === item.path ? 'active' : ''
+									}`}
+									onClick={SignOut}
+									key={index}
+								>
+									{/* icon */}
+									{item.icon}
+
+									{/* text */}
+									<span className="navitem-text">
+										{item.name}
+									</span>
+								</button>
+							);
+						}
 						return (
 							<Link
 								className={`sidenav-item ${

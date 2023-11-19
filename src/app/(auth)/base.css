@@ -10,10 +10,6 @@
 		@apply px-3 py-5 flex flex-col gap-y-5 w-full max-w-sm min-h-fit h-fit;
 	}
 
-	#login-nav {
-		@apply px-5 flex flex-row gap-4 justify-center;
-	}
-
 	#login-form,
 	#signup-form {
 		@apply flex flex-col gap-y-4 h-full;
@@ -23,26 +19,9 @@
 		@apply underline decoration-solid underline-offset-4 decoration-primary-green-100 decoration-[3px];
 	}
 
-	.login-nav-links {
-		@apply text-primary-green-400;
-	}
-
-	#icon-content {
-		@apply flex flex-col items-center gap-y-2;
-	}
-
 	#content-title {
 		@apply uppercase text-6xl text-white;
 		text-shadow: 0px 6px 2px rgba(0, 0, 0, 0.25);
-	}
-
-	#icon-text {
-		@apply uppercase text-center text-6xl text-white;
-		text-shadow: 0px 6px 2px rgba(0, 0, 0, 0.25);
-	}
-
-	#icon-description-text {
-		@apply text-gray-600 text-xl font-light mt-3;
 	}
 
 	#forgot-password {

@@ -1,3 +1,4 @@
+// 'use client';
 // CSS imports
 import './DashboardPage.css';
 
@@ -8,10 +9,18 @@ import SalesTrendWidget from '@/components/Dashboard/SalesTrendWidget/SalesTrend
 import { default as RevenueChart } from '@/components/Dashboard/revenue_linechart/linechart';
 import { default as TotalEarningWidget } from '@/components/Dashboard/TotalEarning';
 import ArcGaugeChart from '@/components/Dashboard/ArcGaugeChart/ArcGaugeChart';
+import { readUser } from '@/lib/actions';
+import DashboardGreeting from '@/app/(dashboard)/dashboard/DashboardGreeting';
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
 	// TODO: reference backend for logged in user from username
-	const username = 'user';
+	let username = 'user';
+
+	// retrieve client info
+	const {
+		data: { user },
+	} = await readUser();
+	username = user?.user_metadata?.name || '';
 
 	const salesTrendData = {
 		filterType: 'week',
@@ -21,11 +30,7 @@ const DashboardPage = () => {
 	return (
 		<>
 			<div className="desktop-container">
-				<div id="dashboard-greeting">
-					<h1>
-						Welcome, <span className="username">{username}</span>
-					</h1>
-				</div>
+				<DashboardGreeting username={username} />
 
 				{/* Section for charts  */}
 				<div id="dashboard-charts">

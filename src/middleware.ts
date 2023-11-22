@@ -70,8 +70,8 @@ export async function middleware(request: NextRequest) {
 		'/account/*',
 		'/settings',
 		'/settings/*',
-		// '/api',
-		// '/api/*',
+		'/organization',
+		'/organization/*',
 	];
 	const unauthenticatedRoutes = [
 		'/login',

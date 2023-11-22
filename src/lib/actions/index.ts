@@ -27,3 +27,36 @@ export async function getUserInformation() {
 		.single();
 	return resp;
 }
+
+export async function getOrganizationInformation(id: string) {
+	const supabase = await createSupbaseServerClientReadOnly();
+
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
+	// get database information
+	const { data: resp, error } = await supabase
+		.from('organization')
+		.select('*')
+		.eq('id', id)
+		.single();
+	return resp;
+}
+
+export async function getOrganizationMemberRole(org_id: string) {
+	const supabase = await createSupbaseServerClientReadOnly();
+
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
+	// get database information
+	const { data: resp, error } = await supabase
+		.from('organization_member')
+		.select('role')
+		.eq('org_id', org_id)
+		.eq('member_id', user?.id)
+		.single();
+	return resp;
+}

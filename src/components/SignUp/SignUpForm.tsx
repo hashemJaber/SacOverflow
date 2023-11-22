@@ -40,6 +40,7 @@ function SignUpForm() {
 
 		// redirect to signin page
 		router.push('/dashboard');
+		router.refresh();
 	};
 
 	const signupNewUser = async () => {

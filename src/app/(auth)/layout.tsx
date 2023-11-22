@@ -45,7 +45,7 @@ export default async function DashboardLayoutPage({ children }: Props) {
 					</h3>
 				</div>
 				<Image
-					priority
+					priority={true}
 					src="/images/camel.svg"
 					alt="camel"
 					width={430}

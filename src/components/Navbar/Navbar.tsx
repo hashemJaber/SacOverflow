@@ -17,6 +17,10 @@ const profileDropdownOptions = [
 		href: '/account',
 	},
 	{
+		name: 'Organization',
+		href: '/organization',
+	},
+	{
 		name: 'Dashboard',
 		href: '/dashboard',
 	},
@@ -205,12 +209,42 @@ function Navbar({ session }: { session: any }) {
 }
 
 const ProfileDropdown = ({ image }: { image: string }) => {
+	const [imageSrc, setImageSrc] = useState('/images/hashemtmp.jpeg');
+	const SignOut = async () => {
+		const supabase = await createSupbaseClient();
+		const { error } = await supabase.auth.signOut();
+		if (error) {
+			console.error(error);
+		}
+		window.location.reload();
+	};
+
+	const getProfileImage = async () => {
+		const supabase = await createSupbaseClient();
+		const {
+			data: { user },
+		} = await supabase.auth.getUser();
+		const { data, error } = await supabase
+			.from('user')
+			.select('*')
+			.eq('id', user?.id)
+			.single();
+
+		if (error) {
+			console.error(error);
+		}
+
+		setImageSrc(data?.image);
+
+		return data?.image;
+	};
 	return (
 		<div className="relative z-50">
 			<Menu>
 				<Menu.Button className="profile-avatar">
 					<Image
-						src={image}
+						src={imageSrc}
+						onLoad={getProfileImage}
 						alt="profile avatar"
 						height={25}
 						width={25}
@@ -248,6 +282,12 @@ const ProfileDropdown = ({ image }: { image: string }) => {
 									{({ active }) => (
 										<Link
 											href={option.href}
+											// If href is signout call signout function
+											onClick={
+												option.href === '/signout'
+													? SignOut
+													: () => {}
+											}
 											className={`${
 												active
 													? 'bg-primary-green-300 text-white'

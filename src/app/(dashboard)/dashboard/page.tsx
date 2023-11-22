@@ -1,6 +1,7 @@
 // CSS imports
 import './DashboardPage.css';
 
+// COMPONENT IMPORTS
 import { default as CategoryPieChart } from '@/components/Dashboard/overall_spending_barchart/overall_spending_barchart';
 import ProjectActivity from '@/components/Dashboard/project_activity/project_activity';
 import MonthlySpending from '@/components/Dashboard/MonthlySpend';
@@ -8,14 +9,46 @@ import SalesTrendWidget from '@/components/Dashboard/SalesTrendWidget/SalesTrend
 import { default as RevenueChart } from '@/components/Dashboard/revenue_linechart/linechart';
 import { default as TotalEarningWidget } from '@/components/Dashboard/TotalEarning';
 import ArcGaugeChart from '@/components/Dashboard/ArcGaugeChart/ArcGaugeChart';
-import { getUserInformation } from '@/lib/actions';
 import DashboardGreeting from '@/app/(dashboard)/dashboard/DashboardGreeting';
+
+// SERVICE IMPORTS
+import {
+	getOrganizationInformation,
+	getOrganizationMemberRole,
+	getUserInformation,
+} from '@/lib/actions';
+import { cookies } from 'next/headers';
+import { IOrganization_table } from '@/types/database.interface';
+import { redirect } from 'next/navigation';
+import FormInput from './FormInput';
 
 const DashboardPage = async () => {
 	// TODO: reference backend for logged in user from username
 	// retrieve client info
 	const userInfo = await getUserInformation();
 	const username = userInfo?.name || '';
+
+	// check if the user has a valid organization stored in their cookies
+	const cookieStore = cookies();
+	const org = cookieStore.get('org')?.value as string;
+
+	// if there is no cookie association with the use ror the org, redirect to the organization page
+	if (!org) {
+		redirect('/organization');
+	}
+	const { role } = await getOrganizationMemberRole(org);
+	if (!role) {
+		redirect('/organization');
+	}
+
+	// check if the user's role is admin for this org else redirect them to the /projects page
+	if (role !== 'admin') {
+		redirect('/projects');
+	}
+
+	const orgInfo: IOrganization_table = await getOrganizationInformation(
+		org as string,
+	);
 
 	const salesTrendData = {
 		filterType: 'week',
@@ -26,6 +59,7 @@ const DashboardPage = async () => {
 		<>
 			<div className="desktop-container">
 				<DashboardGreeting username={username} />
+				<FormInput />
 
 				{/* Section for charts  */}
 				<div id="dashboard-charts">

@@ -39,6 +39,8 @@ function LoginForm() {
 		}
 
 		// redirect to dashboard
+		// assure client components get refreshed
+		router.refresh();
 		router.push('/dashboard');
 	};
 

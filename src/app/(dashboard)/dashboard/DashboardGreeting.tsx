@@ -1,5 +1,4 @@
 export default function DashboardGreeting({ username }: { username: string }) {
-	'use client';
 	return (
 		<div id="dashboard-greeting">
 			<h1>

@@ -24,7 +24,7 @@
 
 	/* Greeting user section */
 	#dashboard-greeting {
-		@apply text-2xl font-bold text-primary-green-700;
+		@apply text-2xl font-bold text-primary-green-700 flex gap-2;
 
 		.username {
 			@apply capitalize;

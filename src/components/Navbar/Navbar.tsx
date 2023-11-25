@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Buttons from '@/components/SharedComponents/Buttons';
 
 // CSS imports
-import './navbar.css';
+import './Navbar.css';
 import { createSupbaseClient } from '@/lib/supabase/client';
 import { useEffect, useState } from 'react';
 

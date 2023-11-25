@@ -20,7 +20,6 @@ import {
 import { cookies } from 'next/headers';
 import { IOrganization_table } from '@/types/database.interface';
 import { redirect } from 'next/navigation';
-import FormInput from './FormInput';
 
 const DashboardPage = async () => {
 	// TODO: reference backend for logged in user from username
@@ -36,7 +35,8 @@ const DashboardPage = async () => {
 	if (!org) {
 		redirect('/organization');
 	}
-	const { role } = await getOrganizationMemberRole(org);
+	const roleResponse = await getOrganizationMemberRole(org);
+	const role: string = roleResponse?.role || '';
 	if (!role) {
 		redirect('/organization');
 	}
@@ -59,7 +59,6 @@ const DashboardPage = async () => {
 		<>
 			<div className="desktop-container">
 				<DashboardGreeting username={username} />
-				<FormInput />
 
 				{/* Section for charts  */}
 				<div id="dashboard-charts">

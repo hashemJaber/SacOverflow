@@ -5,7 +5,7 @@ import React from 'react';
 
 const AddCard = () => {
 	return (
-		<div className="bg-gray-100 hover:bg-gray-300 rounded-md shadow-lg p-3 m-2">
+		<div className="bg-gray-100 hover:bg-gray-300 rounded-md shadow-lg p-3 m-2 transition-all duration-300 ease-in-out">
 			<Link
 				href={'/projects/new'}
 				className="flex flex-col h-full justify-center items-center"

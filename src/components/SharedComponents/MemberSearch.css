@@ -1,0 +1,59 @@
+@tailwind base;
+
+@layer base {
+	.search-input {
+		/* Text */
+		@apply sm:text-sm text-primary-green-500;
+
+		/* layout */
+		@apply block w-full bg-white;
+		/* styling */
+		@apply rounded-md;
+		@apply appearance-none ring-2 ring-primary-green-400;
+
+		/* layout styling */
+		@apply mt-2 px-3 h-10 shadow-sm w-full;
+
+		/* placeholder styling */
+		@apply placeholder:text-primary-green-400;
+		@apply focus:outline-none focus:ring-primary-green-700;
+	}
+
+	/* Searching for members container */
+	.search-container {
+		@apply relative;
+	}
+
+	/* container to show the members as a dropdown option */
+	.members-container {
+		@apply absolute flex flex-col gap-y-1 left-[-125px];
+	}
+
+	/* styling for each member card (search & find component) */
+	.member-info {
+		@apply flex justify-between bg-white/80 rounded-md p-5 z-40 w-[300px] max-w-[400px] hover:bg-white hover:drop-shadow-md transition-all ease-in-out duration-500;
+	}
+
+	/* Layout for Member info */
+	.member-details {
+		@apply flex flex-col items-start gap-2 text-xs;
+	}
+
+	/* styling for the member name and email */
+	.member-name,
+	.member-email {
+		@apply font-bold text-black;
+	}
+
+	/* General info icon for either displaying member is not an org member display invite else show member */
+	.org-member-info-card {
+		@apply text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded me-2 border border-gray-500;
+		/* if not invited member */
+		@apply bg-primary-green-100 text-gray-800;
+
+		/* If an ORG Member */
+		&.member {
+			@apply bg-primary-green-400 text-primary-green-900;
+		}
+	}
+}

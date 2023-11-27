@@ -1,6 +1,6 @@
 'use client';
 
-import './Buttons.css';
+import './buttons.css';
 
 interface ButtonProps {
 	variant: 'primary' | 'secondary';

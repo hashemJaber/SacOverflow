@@ -41,7 +41,7 @@ const TicketCard = ({ ...ticketCard }: ITicketCardProps) => {
 	}
 
 	return (
-		<div className="flex flex-col bg-gray-100 hover:bg-gray-300 rounded-md shadow-lg p-3 m-2">
+		<div className="flex flex-col bg-gray-100 hover:bg-gray-300 rounded-md shadow-lg p-3 m-2 transition-all duration-500 ease-in-out">
 			<Link href={`/projects/${ticketCard.id}`}>
 				<div className="flex justify-between place-items-center space-x-2">
 					{/* <FontAwesomeIcon

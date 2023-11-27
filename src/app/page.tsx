@@ -86,6 +86,7 @@ export default function Home() {
 						variant="primary"
 						size="large"
 						content="Join Us"
+						href="/signup"
 					/>
 				</div>
 			</section>

@@ -1,80 +1,42 @@
-'use client';
-import Dropdown from '@/components/Dropdown';
 import Image from 'next/image';
-
-import { Lexend_Giga } from 'next/font/google';
-const inter = Lexend_Giga({ subsets: ['latin'] });
 
 // import css
 import './base.css';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Props } from '@/types/componentTypes';
+import {
+	BrandHeroSection,
+	LanguageAuthHeader,
+} from '@/components/SharedComponents/AuthHeaderComponent/RegistrationComponents';
 
-export default function DashboardLayoutPage({ children }: Props) {
-	const path = usePathname();
+import { Lexend_Giga } from 'next/font/google';
+import { redirect } from 'next/navigation';
+import { readUser } from '@/lib/actions';
+const lexendGiga = Lexend_Giga({ subsets: ['latin'] });
 
-	let text = 'Please Sign up to Proceed';
-	if (path === '/login') {
-		text = 'Please Login to Proceed';
+export default async function DashboardLayoutPage({ children }: Props) {
+	// if the user is logged in redirect to dashboard
+	const {
+		data: { user },
+	} = await readUser();
+
+	if (user) {
+		// redirect to dashboard
+		return redirect('/dashboard');
 	}
+
 	return (
 		<section id="login-section">
 			<div id="login-content">
-				{/* <!-- login-nav section --> */}
-				<div id="login-nav">
-					<div>
-						<Dropdown />
-					</div>
-
-					<button id="signin-btn">
-						<Link
-							href="/signup"
-							className={`login-nav-links ${
-								path === '/signup' ? 'sign-in-btn' : ''
-							}`}
-						>
-							Sign Up
-						</Link>
-					</button>
-					<button id="signup-btn">
-						<Link
-							href="/login"
-							// className="sign-in-btn login-nav-links"
-							className={`login-nav-links ${
-								path === '/login' ? 'sign-in-btn' : ''
-							}`}
-						>
-							Login
-						</Link>
-					</button>
-				</div>
-
-				<div id="icon-content">
-					<Image
-						priority
-						src="/images/camel.svg"
-						alt="camel"
-						width={240}
-						height={240}
-					/>
-
-					<div className={inter.className}>
-						<h3 id="icon-text">Camel</h3>
-					</div>
-
-					<h5 id="icon-description-text">{text}</h5>
-				</div>
-				{/* <div className="forms-container"></div> */}
+				{/* Language, Sign In, & Register Links */}
+				<LanguageAuthHeader />
+				{/* Image with Product Logo */}
+				<BrandHeroSection />
 				{children}
 			</div>
 
 			{/* <!-- green content to right of login --> */}
-			<div
-				id="right-content"
-				className="hidden md:flex flex-col justify-center items-center w-3/4 bg-[#5A8472] gap-y-4 min-h-full"
-			>
-				<div className={inter.className}>
+			<div id="right-content">
+				<div className={lexendGiga.className}>
 					<h3
 						id="content-title"
 						className=""
@@ -83,7 +45,7 @@ export default function DashboardLayoutPage({ children }: Props) {
 					</h3>
 				</div>
 				<Image
-					priority
+					priority={true}
 					src="/images/camel.svg"
 					alt="camel"
 					width={430}

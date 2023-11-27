@@ -5,8 +5,38 @@ import Link from 'next/link';
 import Buttons from '@/components/SharedComponents/Buttons';
 
 // CSS imports
-import './navbar.css';
-import { usePathname } from 'next/navigation';
+import './Navbar.css';
+import { createSupbaseClient } from '@/lib/supabase/client';
+import { useEffect, useState } from 'react';
+
+import { Menu, Transition } from '@headlessui/react';
+
+const profileDropdownOptions = [
+	{
+		name: 'Account',
+		href: '/account',
+	},
+	{
+		name: 'Organization',
+		href: '/organization',
+	},
+	{
+		name: 'Dashboard',
+		href: '/dashboard',
+	},
+	{
+		name: 'Projects',
+		href: '/projects',
+	},
+	{
+		name: 'Settings',
+		href: '/settings',
+	},
+	{
+		name: 'Sign Out',
+		href: '/signout',
+	},
+];
 
 const SearchBar = (props: { className?: string }) => {
 	const { className } = props;
@@ -41,23 +71,34 @@ const SearchBar = (props: { className?: string }) => {
  *
  * @returns a navbar component with a logo, sign up button, and login button
  */
-function Navbar() {
-	let loggedIn = false;
-	const pathName = usePathname();
+function Navbar({ session }: { session: any }) {
+	// not sure if appropriate right now how im passing in the values... since I pass in the users entire information....
+	const loggedIn = session !== undefined;
 
-	// LOGGED IN PATHS
-	const loggedInPaths = [
-		'/dashboard',
-		'/projects',
-		'/invoices',
-		'/account',
-		'/profile',
-	];
+	const [image, setImage] = useState('/images/hashemtmp.jpeg');
 
-	// if logged in, show navbar
-	if (loggedInPaths.includes(pathName)) {
-		loggedIn = true;
-	}
+	// implement client-side data fetching
+	useEffect(() => {
+		// COMMENT: ahahaha ha, this is ummm ahahaha ha
+		if (loggedIn) {
+			const fetchInfo = async () => {
+				const supabase = await createSupbaseClient();
+				const { error, data } = await supabase
+					.from('user')
+					.select('*')
+					.eq('id', session?.id)
+					.single();
+
+				// assure data info is some array
+				if (data) {
+					setImage(data?.image);
+				}
+			};
+
+			fetchInfo();
+		}
+	}, []);
+	const { email, username, name } = session || {};
 
 	if (loggedIn) {
 		return (
@@ -106,30 +147,7 @@ function Navbar() {
 						</svg>
 
 						{/* profile avatar */}
-						<button className="profile-avatar">
-							<Image
-								src="/images/hashemtmp.jpeg"
-								alt="profile"
-								height={25}
-								width={25}
-								className="rounded-full h-8 w-8"
-							/>
-
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								strokeWidth="1.5"
-								stroke="currentColor"
-								className="profile-avatar-arrow"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-								/>
-							</svg>
-						</button>
+						<ProfileDropdown image={image} />
 					</div>
 				</div>
 			</nav>
@@ -190,4 +208,102 @@ function Navbar() {
 	);
 }
 
+const ProfileDropdown = ({ image }: { image: string }) => {
+	const [imageSrc, setImageSrc] = useState('/images/hashemtmp.jpeg');
+	const SignOut = async () => {
+		const supabase = await createSupbaseClient();
+		const { error } = await supabase.auth.signOut();
+		if (error) {
+			console.error(error);
+		}
+		window.location.reload();
+	};
+
+	const getProfileImage = async () => {
+		const supabase = await createSupbaseClient();
+		const {
+			data: { user },
+		} = await supabase.auth.getUser();
+		const { data, error } = await supabase
+			.from('user')
+			.select('*')
+			.eq('id', user?.id)
+			.single();
+
+		if (error) {
+			console.error(error);
+		}
+
+		setImageSrc(data?.image);
+
+		return data?.image;
+	};
+	return (
+		<div className="relative z-50">
+			<Menu>
+				<Menu.Button className="profile-avatar">
+					<Image
+						src={imageSrc}
+						onLoad={getProfileImage}
+						alt="profile avatar"
+						height={25}
+						width={25}
+						className="rounded-full h-8 w-8"
+					/>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						strokeWidth="1.5"
+						stroke="currentColor"
+						className="profile-avatar-arrow"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+						/>
+					</svg>
+				</Menu.Button>
+
+				<Transition
+					// as={Fragment}
+					enter="transition ease-out duration-100"
+					enterFrom="transform opacity-0 scale-95"
+					enterTo="transform opacity-100 scale-100"
+					leave="transition ease-in duration-75"
+					leaveFrom="transform opacity-100 scale-100"
+					leaveTo="transform opacity-0 scale-95"
+				>
+					<Menu.Items className="profile-avatar-items">
+						<div className="px-1 py-1 ">
+							{profileDropdownOptions.map((option, idx) => (
+								<Menu.Item key={idx}>
+									{({ active }) => (
+										<Link
+											href={option.href}
+											// If href is signout call signout function
+											onClick={
+												option.href === '/signout'
+													? SignOut
+													: () => {}
+											}
+											className={`${
+												active
+													? 'bg-primary-green-300 text-white'
+													: 'text-gray-900'
+											} flex w-full items-center rounded-md px-2 py-2 text-sm`}
+										>
+											{option.name}
+										</Link>
+									)}
+								</Menu.Item>
+							))}
+						</div>
+					</Menu.Items>
+				</Transition>
+			</Menu>
+		</div>
+	);
+};
 export default Navbar;

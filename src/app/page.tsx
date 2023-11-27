@@ -1,11 +1,9 @@
 import Card from '@/components/HomePage/Card';
 import Image from 'next/image';
 import Buttons from '@/components/SharedComponents/Buttons';
-
 import { Lexend_Giga } from 'next/font/google';
-
 const inter = Lexend_Giga({ subsets: ['latin'] });
-
+import Testimonial from '@/components/HomePage/Testimonial';
 const cardOneContent = (
 	<p className="leading-6">
 		<b>Cloud Asset Management Enhanced Launcher (CAMEL)</b>
@@ -76,7 +74,7 @@ export default function Home() {
 						/>
 						<Card
 							title="Testimonials"
-							content={cardThreeContent}
+							content={<Testimonial />}
 						/>
 					</div>
 				</div>

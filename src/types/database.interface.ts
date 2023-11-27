@@ -72,3 +72,11 @@ export interface IUsers_table {
 	image: string;
 	created_at: string | Date;
 }
+export interface ITestimonial {
+	id: number;
+	created_at: string;
+	review_content: string;
+	user_id: number;
+	userName: string;
+	user_profile_link: string;
+}

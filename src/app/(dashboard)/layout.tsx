@@ -10,7 +10,7 @@ const Layout = ({ children }: Props) => {
 	// for opening and closing sidebar
 	const [showSidebar, setShowSidebar] = useState(false);
 
-	const Hamburger = ({ setter }) => {
+	const Hamburger = ({ setter }: { setter: CallableFunction }) => {
 		return (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ const Layout = ({ children }: Props) => {
 				stroke="currentColor"
 				className="overlay-icon"
 				onClick={() => {
-					setter(oldVal => !oldVal);
+					setter((oldVal: boolean) => !oldVal);
 				}}
 			>
 				<path

@@ -1,4 +1,19 @@
-#!/usr/bin/env sh
+#!/bin/sh
 . "$(dirname -- "$0")/_/husky.sh"
-
+ 
+echo '🕵️‍♂️🔎 SacOverflow detectives are inspecting your code before commiting...🔎🕵️‍♂️'
+echo 'This might take some time, grab a coffee and enjoy the view!'
+ 
+# Check ESLint Standards
+npm run lint ||
+(
+    echo '🦸‍♂️🦹‍♀️ Code Alert! SacOverflow superheroes needed! 🦸‍♀️🦹‍♂️ 
+     🔨❌ You have a problem in your code. Check linter 🔨❌
+          Run 'npm lint', add changes and try commit again.';
+    false;
+)
+ 
+echo "🎬🍿 It's Showtime! The code's ready for the big screen! 🍿🎬"
+echo "Rolling out the red carpet and committing... Lights, Camera, Action! 🌟🎥"
+ 
 npx lint-staged

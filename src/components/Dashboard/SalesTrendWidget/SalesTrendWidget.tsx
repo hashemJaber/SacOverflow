@@ -10,10 +10,13 @@ import { calculatePercentageDifference } from '@/utils/generalUtils';
 import './SalesTrendWidget.css';
 import { getSalesOverviewData, getSpendingCategories } from '@/utils/dataUtils';
 
-const SalesTrendWidget = async (
-	filterType: 'year' | 'month' | 'week' | 'day',
-	className?: string,
-) => {
+const SalesTrendWidget = async ({
+	filterType,
+	className,
+}: {
+	filterType: 'year' | 'month' | 'week' | 'day' | string;
+	className?: string;
+}) => {
 	// get the mockaroo data
 	const SalesOverview = await getSalesOverviewData();
 	// check if totals not null keys
@@ -73,7 +76,7 @@ const SalesTrendWidget = async (
 						>
 							<span className="title">{category.category}</span>
 							<span className="amount">
-								${category?.total | '0'}
+								${category?.total || '0'}
 							</span>
 							<SingleLineChart
 								data={category.data}

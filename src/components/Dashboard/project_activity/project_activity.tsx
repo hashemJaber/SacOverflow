@@ -203,7 +203,7 @@ const ProjectActivity = () => {
 		],
 	};
 
-	const handleMonthClick = month => {
+	const handleMonthClick = (month: string) => {
 		setCurrentMonth(month);
 	};
 
@@ -227,39 +227,39 @@ const ProjectActivity = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{monthlyActivities[currentMonth].map(
-							(activity, index) => (
-								<tr
-									key={index}
-									className={`border-b ${
-										index ===
-										monthlyActivities[currentMonth].length -
-											1
-											? 'rounded-bl-lg rounded-br-lg'
-											: ''
-									}`}
-								>
-									<td className="px-4 py-2 flex items-center">
-										<span
-											className={`inline-block w-3 h-3 mr-2 rounded-full ${activity.color}`}
-										></span>
-										{activity.status}
-									</td>
-									<td className="px-4 py-2">
-										{activity.member}
-									</td>
-									<td className="px-4 py-2">
-										{activity.lastUpdated}
-									</td>
-									<td className="px-4 py-2 truncate">
-										{activity.notes}
-									</td>
-									<td className="px-4 py-2">
-										<input type="checkbox" />
-									</td>
-								</tr>
-							),
-						)}
+						{monthlyActivities[
+							currentMonth as keyof typeof monthlyActivities
+						].map((activity: any, index: any) => (
+							<tr
+								key={index}
+								className={`border-b ${
+									index ===
+									monthlyActivities[
+										currentMonth as keyof typeof monthlyActivities
+									].length -
+										1
+										? 'rounded-bl-lg rounded-br-lg'
+										: ''
+								}`}
+							>
+								<td className="px-4 py-2 flex items-center">
+									<span
+										className={`inline-block w-3 h-3 mr-2 rounded-full ${activity.color}`}
+									></span>
+									{activity.status}
+								</td>
+								<td className="px-4 py-2">{activity.member}</td>
+								<td className="px-4 py-2">
+									{activity.lastUpdated}
+								</td>
+								<td className="px-4 py-2 truncate">
+									{activity.notes}
+								</td>
+								<td className="px-4 py-2">
+									<input type="checkbox" />
+								</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>

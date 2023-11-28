@@ -7,65 +7,12 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 
 function LineChart(props: { id: string; className: string }) {
 	const { id, className } = props;
-	const chartRef = useRef(null);
+	const chartRef = useRef<am5xy.XYChart | null>(null);
 
 	useLayoutEffect(() => {
 		const root = am5.Root.new(`${id}`);
 
-		root.setThemes([
-			am5themes_Animated.new(root),
-			// am5themes_Responsive.new(root, {
-			//   rules: [
-			//     {
-			//       // When on a small width device like mobile
-			//       relevant: (target) => target.pixelWidth <= 600,
-			//       state: (target, stateId) => {
-			//         if (target instanceof am5xy.CategoryAxis) {
-			//           target.get("renderer").labels.template.setAll({
-			//             fontSize: 10, // Reduce the font size
-			//             rotation: -45, // Rotate labels to prevent overlap
-			//             centerY: am5.p50,
-			//             centerX: am5.p100
-			//           });
-			//           target.get("renderer").minGridDistance = 50; // Increase the grid distance
-			//         }
-			//         if (target instanceof am5xy.ValueAxis) {
-			//           target.get("renderer").labels.template.setAll({
-			//             fontSize: 10 // Reduce the font size
-			//           });
-			//         }
-			//         if (target instanceof am5.Circle) {
-			//           // If this is a bullet, reduce its size
-			//           target.setAll({ radius: 2 });
-			//         }
-			//         return stateId;
-			//       }
-			//     },
-			//     {
-			//       // When on a medium width device
-			//       relevant: (target) => target.pixelWidth > 600 && target.pixelWidth <= 800,
-			//       state: (target, stateId) => {
-			//         if (target instanceof am5xy.CategoryAxis) {
-			//           target.get("renderer").labels.template.setAll({
-			//             fontSize: 12, // Slightly larger font size
-			//             rotation: -45, // Rotate labels to prevent overlap
-			//             centerY: am5.p50,
-			//             centerX: am5.p100
-			//           });
-			//           target.get("renderer").minGridDistance = 40; // Slightly reduce the grid distance
-			//         }
-			//         if (target instanceof am5xy.ValueAxis) {
-			//           target.get("renderer").labels.template.setAll({
-			//             fontSize: 12 // Slightly larger font size
-			//           });
-			//         }
-			//         return stateId;
-			//       }
-			//     }
-			//     // Add more rules as needed
-			//   ]
-			// })
-		]);
+		root.setThemes([am5themes_Animated.new(root)]);
 
 		// Create chart
 		const chart = root.container.children.push(
@@ -108,7 +55,7 @@ function LineChart(props: { id: string; className: string }) {
 		});
 
 		// Add series
-		function makeSeries(name, fieldName, color) {
+		function makeSeries(name: string, fieldName: string, color: string) {
 			const series = chart.series.push(
 				am5xy.LineSeries.new(root, {
 					name: name,

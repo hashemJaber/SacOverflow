@@ -18,7 +18,7 @@ function LoginForm() {
 
 	const router = useRouter();
 
-	const handleSubmit = async e => {
+	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		const supabase = await createBrowserClient(
 			process.env.NEXT_PUBLIC_SUPABASE_URL!,

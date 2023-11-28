@@ -160,7 +160,13 @@ const AccountControlItems = [
 	},
 ];
 
-const SideNavbar = ({ show, setter }) => {
+const SideNavbar = ({
+	show,
+	setter,
+}: {
+	show: boolean;
+	setter: CallableFunction;
+}) => {
 	const pathname = usePathname();
 
 	// NOTE: Advise on this, if want to do this, or use server side ??

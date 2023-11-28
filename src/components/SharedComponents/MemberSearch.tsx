@@ -10,7 +10,7 @@ export default function FormInput() {
 	const [display, setDisplay] = useState(false);
 	const [displayedUsers, setDisplayedUsers] = useState([]);
 	// Ref for assuring not clicking item inside container content
-	const containerRef = useRef(null);
+	const containerRef = useRef<any>(null);
 
 	/**
 	 * Function to update the results of the current query user is searching for.
@@ -18,7 +18,7 @@ export default function FormInput() {
 	 *
 	 * @param e Form event
 	 */
-	const updateSearch = async e => {
+	const updateSearch = async (e: any) => {
 		e.preventDefault();
 
 		// update the email
@@ -50,7 +50,7 @@ export default function FormInput() {
 			.eq('member_id', userId);
 
 		// if the user is already a member, do not send invite
-		if (orgMembers.length > 0) {
+		if (orgMembers && orgMembers.length > 0) {
 			return true;
 		}
 		return false;
@@ -60,7 +60,7 @@ export default function FormInput() {
 	 * Event handler for when the user clicks outside the search bar container.
 	 * @param e Event
 	 */
-	const handleBlur = e => {
+	const handleBlur = (e: any) => {
 		// Delay the execution to allow time for the click event to fire
 		setTimeout(() => {
 			// Check if the current active element is outside the container
@@ -121,7 +121,7 @@ export default function FormInput() {
 				}),
 			);
 			// Wait for all promises to resolve
-			const memberChecksResolved = await Promise.all(memberChecks);
+			const memberChecksResolved: any = await Promise.all(memberChecks);
 			// Set the displayed users
 			setDisplayedUsers(memberChecksResolved);
 		}
@@ -148,7 +148,7 @@ export default function FormInput() {
 				<div className="search-container">
 					<div className="members-container">
 						{displayedUsers.length > 0 ? (
-							displayedUsers.map(user => (
+							displayedUsers.map((user: any) => (
 								<SearchMemberCard
 									key={user.id}
 									name={user.name}
@@ -179,7 +179,7 @@ function getCookie(name: string): string {
 	const value = `; ${window.document.cookie}`;
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) {
-		return parts.pop().split(';').shift();
+		return parts.pop()?.split(';').shift() as string;
 	}
 	return '';
 }
@@ -209,7 +209,7 @@ const SearchMemberCard = ({
 	 * Function to invite a user to the organization if they aren't already a member
 	 * @param e Event
 	 */
-	const inviteMember = async e => {
+	const inviteMember = async (e: any) => {
 		e.preventDefault();
 
 		// Search withs upabase if user exists

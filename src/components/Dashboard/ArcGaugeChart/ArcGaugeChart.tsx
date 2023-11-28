@@ -12,7 +12,9 @@ interface ArcGaugeChartDataElement {
 }
 
 function getMinMaxValue(data: ArcGaugeChartDataElement[]) {
-	const convertObjectValues = Object.values(data);
+	// const convertObjectValues = Object.values(data);
+
+	const convertObjectValues = Object.values(data).map(({ value }) => value);
 
 	const min = Math.min(...convertObjectValues);
 	const max = Math.max(...convertObjectValues);
@@ -22,24 +24,37 @@ function getMinMaxValue(data: ArcGaugeChartDataElement[]) {
 
 // Meh
 function getPercentageValue(data: ArcGaugeChartDataElement[], key: string) {
-	const convertObjectValues = Object.values(data);
+	const convertObjectValues = Object.values(data).map(
+		element => element.value,
+	);
 	const max = Math.max(...convertObjectValues);
 
-	const percentVal = (data[key] * 100) / max;
+	const idx = parseInt(key);
+
+	// const percentVal = (data[key].value * 100) / max;
+	const percentVal = (data[idx].value * 100) / max;
 	return percentVal;
 }
 
 // Guidance https://www.amcharts.com/demos/animated-gauge/
-const ArcGaugeChart = props => {
+const ArcGaugeChart = (props: {
+	data?: ArcGaugeChartDataElement[];
+	id: string;
+	className?: string;
+}) => {
 	const [currentMonth, setCurrentMonth] = useState('January');
 	const [chartFill, setChartFill] = useState(0);
 	const [currentValue, setCurrentValue] = useState(0);
 
-	const updateMonth = month => {
+	const updateMonth = (month: string) => {
 		setCurrentMonth(month);
-		const percentVal = getPercentageValue(months, month);
+		const monthsArray = Object.entries(months).map(([key, value]) => ({
+			month: key,
+			value: value,
+		}));
+		const percentVal = getPercentageValue(monthsArray, month);
 		setChartFill(percentVal);
-		setCurrentValue(months[month]);
+		setCurrentValue(months[month as keyof typeof months]);
 	};
 
 	// fetch from API here
@@ -58,8 +73,14 @@ const ArcGaugeChart = props => {
 		December: 11215.94,
 	};
 
+	const monthsArray: ArcGaugeChartDataElement[] = Object.entries(months).map(
+		([month, value]) => {
+			return { month, value };
+		},
+	);
+
 	// get min and max values
-	const { min, max } = getMinMaxValue(months);
+	const { min, max } = getMinMaxValue(monthsArray);
 
 	// convert object to object with percentage attributes TODO: implement filling chart dynamically
 	const newData = Object.entries(months).map(([month, value]) => {
@@ -149,8 +170,6 @@ const ArcGaugeChart = props => {
 		axisRange0.get('axisFill')?.setAll({
 			visible: true,
 			fill: am5.color(0x346e53),
-			// rounded effect
-			cornerRadius: 10,
 		});
 
 		axisRange0.get('label')?.setAll({
@@ -169,7 +188,6 @@ const ArcGaugeChart = props => {
 		axisRange1.get('axisFill')?.setAll({
 			visible: true,
 			fill: am5.color(0xf1f1f4),
-			cornerRadius: 10,
 		});
 
 		axisRange1.get('label')?.setAll({

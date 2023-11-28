@@ -64,7 +64,10 @@ const DashboardPage = async () => {
 				<div id="dashboard-charts">
 					<div className="revenues-chart col-charts">
 						<div className="charts-title">Revenue Chart</div>
-						<RevenueChart className="spending-chart-container" />
+						<RevenueChart
+							className="spending-chart-container"
+							id="revenue-chart"
+						/>
 					</div>
 					<div className="spending-chart col-charts">
 						<div className="charts-title overall-spending">

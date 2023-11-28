@@ -18,7 +18,7 @@ export default async function Page() {
 				Choose Organization
 			</span>
 			<div className="flex-grow overflow-y-auto bg-white text-default-text">
-				{data?.length > 0 ? (
+				{data && data?.length > 0 ? (
 					<>
 						<div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 m-4 gap-4">
 							{/* NOTE: When fetching the organization associated with a user, if non center the create org card. */}

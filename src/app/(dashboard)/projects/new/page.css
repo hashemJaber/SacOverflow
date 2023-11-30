@@ -1,0 +1,28 @@
+@tailwind base;
+
+@layer base {
+	.input-forms {
+		/* Text */
+		@apply sm:text-sm text-primary-green-500;
+
+		/* layout */
+		@apply block w-full bg-white;
+		/* styling */
+		@apply rounded-md;
+		@apply appearance-none ring-2 ring-primary-green-400;
+
+		/* layout styling */
+		@apply mt-2 px-3 h-10 shadow-sm w-full;
+
+		/* placeholder styling */
+		@apply placeholder:text-primary-green-400;
+		@apply focus:outline-none focus:ring-primary-green-700;
+	}
+
+	.input-labels {
+		/* Text */
+		@apply text-lg text-gray-800 font-semibold leading-6;
+		/* layout */
+		@apply block text-start;
+	}
+}

@@ -1,0 +1,17 @@
+@tailwind base;
+
+.h1 {
+	font-size: 30px;
+}
+
+@layer base {
+	.settings-nav {
+		@apply text-center font-bold;
+		font-family: Arial, Helvetica, sans-serif;
+
+		&.title-Settings {
+			@apply text-primary-green-600;
+			font-size: 40px;
+		}
+	}
+}

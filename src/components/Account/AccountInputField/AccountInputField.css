@@ -1,0 +1,38 @@
+@tailwind base;
+
+@layer base {
+	.container {
+		@apply relative inline-flex items-center justify-center w-20 h-20 bg-primary-green-500 rounded-full;
+	}
+}
+
+.accountcontainer {
+	@apply max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md;
+}
+.accountinfo {
+	@apply flex items-center gap-2;
+}
+
+.user-profile {
+	@apply flex flex-col justify-center;
+}
+
+.name {
+	@apply font-medium text-gray-500;
+}
+
+.role {
+	@apply text-sm text-gray-400;
+}
+
+.infocolumns {
+	@apply grid gap-2 mb-6 md:grid-cols-1;
+}
+
+.inputf {
+	@apply bg-gray-50 border mx-2 border-gray-300 text-gray-500 rounded-lg block p-2.5;
+}
+
+.labelsformat {
+	@apply block mb-2 ml-2 font-medium text-gray-400;
+}

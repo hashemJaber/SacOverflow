@@ -1,0 +1,83 @@
+.loader {
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.loader-image::before {
+	content: '';
+}
+
+.loader-image img {
+	display: block;
+}
+
+.loader-image img:invalid {
+	display: none;
+}
+
+.loader-image {
+	position: absolute;
+	opacity: 0;
+	width: 150px;
+	height: auto;
+	animation: displayImage 1.1s linear forwards;
+	visibility: hidden;
+}
+
+@keyframes displayImage {
+	0%,
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+	9% {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.image-0 {
+	animation-delay: 0s;
+}
+.image-1 {
+	animation-delay: 0.05s;
+}
+.image-2 {
+	animation-delay: 0.1s;
+}
+.image-3 {
+	animation-delay: 0.2s;
+}
+.image-4 {
+	animation-delay: 0.3s;
+}
+.image-5 {
+	animation-delay: 0.4s;
+}
+.image-6 {
+	animation-delay: 0.5s;
+}
+.image-7 {
+	animation-delay: 0.6s;
+}
+.image-8 {
+	animation-delay: 0.7s;
+}
+.image-9 {
+	animation-delay: 0.8s;
+}
+.image-10 {
+	animation-delay: 0.9s;
+}
+
+.loader-text {
+	margin-top: 200px;
+	font-size: 24px;
+	font-weight: bold;
+	color: black;
+}

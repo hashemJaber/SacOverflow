@@ -1,0 +1,11 @@
+@tailwind base;
+
+@layer base {
+	.profilecontainer {
+		@apply relative inline-flex items-center justify-center w-20 h-20 bg-primary-green-500 rounded-full mx-2 my-2;
+	}
+}
+
+.font {
+	@apply font-medium text-3xl text-white;
+}

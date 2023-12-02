@@ -39,7 +39,7 @@ function LoginForm() {
 			<div className="flex justify-end md:justify-center">
 				{/* <!-- forgot password right side --> */}
 				<Link
-					href="#"
+					href="/recoverpassword"
 					id="forgot-password"
 				>
 					Recover Password

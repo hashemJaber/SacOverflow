@@ -69,6 +69,11 @@ This project is aimed at assisting Project Managers in managing their team and p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Testing
+
+[Place holder for testing instructions.]
+
+
 ## Getting Started
 
 ### Prerequisites
@@ -207,6 +212,13 @@ To learn more about Next.js, take a look at the following resources:
 -   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## CSC 190
+<img width="1237" alt="Screenshot 2023-12-06 at 5 14 38 PM" src="https://github.com/hashemJaber/SacOverflow/assets/91439032/7819eb25-8e30-4365-83be-90676cccebd7">
+
+## CSC 191
+<img width="1245" alt="Screenshot 2023-12-06 at 4 43 30 PM" src="https://github.com/hashemJaber/SacOverflow/assets/91439032/b1323f14-35aa-40a7-99c9-a5999d26adaa">
+
 
 ## Deploy on Vercel
 

@@ -26,6 +26,9 @@ Welcome to Sacoverflow's GitHub! 🚀 This project is aimed at assisting Project
   </p>
 </div>
 
+
+
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -57,6 +60,7 @@ This project is aimed at assisting Project Managers in managing their team and p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
 ### Built With
 
 -   [![NextJS Icon][nextjs-icon]](https://nextjs.org/)
@@ -72,6 +76,10 @@ This project is aimed at assisting Project Managers in managing their team and p
 ## Testing
 
 [Place holder for testing instructions.]
+
+
+## Documentation 
+<img width="1021" alt="Screenshot 2023-12-07 at 8 29 22 PM" src="https://github.com/hashemJaber/SacOverflow/assets/91439032/13dc345a-0cdd-461d-a4bd-5b1b50dbb018">
 
 
 ## Getting Started

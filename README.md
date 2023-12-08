@@ -17,7 +17,7 @@
   <h2 align="center">Cloud Asset Management Enhanced Launcher</h2>
 
   <p align="center"> 
-Welcome to Sacoverflow's GitHub! 🚀 This project is aimed at assisting Project Managers in overviewing their organization's finances and overall management about projects and tasks within their org.
+Welcome to Sacoverflow's GitHub! 🚀 This project is aimed at assisting Project Managers in overviewing their organization's finances and overall management about projects and tasks within their organization.
 <br>
 <a href="https://github.com/hashemJaber/SacOverflow/issues">Report Bug</a>
 ·
@@ -56,7 +56,7 @@ Welcome to Sacoverflow's GitHub! 🚀 This project is aimed at assisting Project
 
 The SacOverflow development team, consisting of Computer Science undergraduates from California State University, Sacramento, is behind this project.
 
-This project is aimed at assisting Project Managers in managing their team and projects. By making use of this software, supervisors or relevant stakeholders will be allowed to make more informed decisions within their organization and simplify their day-to-day task duties. This software is to be developed with the intention of being used on both Mobile and Web based platforms.
+This project is aimed at assisting Project Managers in managing their team and projects. By making use of this software, supervisors or relevant stakeholders will be allowed to make more informed decisions within their organization and simplify their day-to-day task duties. This software is to be developed with the intention of being used on both mobile and web-based platforms.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -98,7 +98,7 @@ git clone https://github.com/hashemJaber/SacOverflow.git
 cd SacOverflow
 ```
 
-2. Install the dependencies using whatever package manager you prefer.
+2. Install the dependencies using your preferred package manager.
 
 ```bash
 npm install
@@ -125,7 +125,7 @@ bun dev
 ### Setup
 
 1. Create a `.env.local` file in the root directory of the project.
-2. Development phases there is a Mockaroo API key that is needed to be able to run the project. Please contact the lead for the key.
+2. Development phase where there is a Mockaroo API key that is needed to be able to run the project. Please contact the lead for the key.
 3. Add the following to the `.env.local` file.
 
 ```bash
@@ -230,15 +230,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Sprint 5 
 <img width="799" alt="Screenshot 2023-12-07 at 12 32 36 PM" src="https://github.com/hashemJaber/SacOverflow/assets/91439032/7f1f3bbc-e499-4172-b170-b32c589818f0">
 
-## Spring 6
+## Sprint 6
 <img width="749" alt="Screenshot 2023-12-07 at 12 40 49 PM" src="https://github.com/hashemJaber/SacOverflow/assets/91439032/38f1259d-b755-4709-a9bc-57fbdf046577">
-
 
 ## Sprint 7 
 <img width="778" alt="Screenshot 2023-12-07 at 12 35 35 PM" src="https://github.com/hashemJaber/SacOverflow/assets/91439032/1d78dfb4-8bf1-4d93-a38a-a630544fa31a">
 
-## Spring 8
-
+## Sprint 8
 <img width="775" alt="Screenshot 2023-12-07 at 12 36 28 PM" src="https://github.com/hashemJaber/SacOverflow/assets/91439032/3694b508-5302-458f-92e8-3be4ad5c22cf">
 
 ## Deploy on Vercel

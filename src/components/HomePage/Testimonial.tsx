@@ -5,7 +5,7 @@ import { createSupbaseClient } from '@/lib/supabase/client';
 
 function Testimonial() {
 	const [thirdCard_tes, setThirdCard_tes] = useState([]);
-	const [userTest, setUserTest] = useState({});
+	const [userTest, setUserTest] = useState<any>({});
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const num_rand = 5;
@@ -26,7 +26,7 @@ function Testimonial() {
 					}
 					setThirdCard_tes(data);
 				}
-			} catch (error) {
+			} catch (error: any) {
 				setError(error.message);
 			} finally {
 				setIsLoading(false);

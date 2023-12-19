@@ -1,0 +1,29 @@
+@tailwind base;
+
+@layer base {
+	.horizontal-line {
+		height: 3px;
+		margin-bottom: 10px;
+		justify-content: center;
+		margin-top: 10px;
+		width: 500px;
+		border-bottom: 2px solid green;
+		padding-bottom: 70px;
+	}
+
+	.settings-account-management-item {
+		@apply text-center px-4 py-4 font-bold mx-auto;
+		font-family: Arial, Helvetica, sans-serif;
+
+		&.title-Account {
+			@apply text-gray-400;
+			font-size: 40px;
+		}
+
+		/* in progress tasks */
+		&.title-Notifications {
+			@apply text-gray-400;
+			font-size: 40px;
+		}
+	}
+}

@@ -12,6 +12,15 @@ npm run lint ||
           Run 'npm lint', add changes and try commit again.';
     false;
 )
+
+# Check npm run build & verify
+npm run build ||
+(
+    echo '🦸‍♂️🦹‍♀️ Code Alert! SacOverflow superheroes needed! 🦸‍♀️🦹‍♂️ 
+     🔨❌ You have a problem in your code. Check linter 🔨❌
+          Run 'npm run build', make the necessary changes, and then attempt to commit again. Make sure your code builds successfully before committing.';
+    false;
+)
  
 echo "🎬🍿 It's Showtime! The code's ready for the big screen! 🍿🎬"
 echo "Rolling out the red carpet and committing... Lights, Camera, Action! 🌟🎥"

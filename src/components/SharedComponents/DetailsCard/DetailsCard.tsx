@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 
 // import CSS
 import './DetailsCard.css';
+import { useState } from 'react';
+import CreateOrgModal from '@/components/Organization/CreateOrgModal';
 
 export function CreateOrgCard({
 	className,
@@ -15,13 +17,16 @@ export function CreateOrgCard({
 	children?: React.ReactNode;
 	clickHandler?: () => void;
 }) {
-	return (
+	const [modalOpen, setModalOpen] = useState(false);
+
+	return !modalOpen ? (
 		<div
 			id="create-org-card"
 			className={`${className}`}
 		>
-			<Link
-				href={'/projects/new'}
+			<button
+				// href={'/projects/new'}
+				onClick={() => setModalOpen(true)}
 				className="flex flex-col h-full justify-center items-center"
 			>
 				<div className="flex flex-col items-center h-2/3 justify-center p-5">
@@ -44,8 +49,10 @@ export function CreateOrgCard({
 				<span className="text-gray-500 font-semibold capitalize text-center">
 					Create New Organization...
 				</span>
-			</Link>
+			</button>
 		</div>
+	) : (
+		<CreateOrgModal clickHandler={() => setModalOpen(false)} />
 	);
 }
 

@@ -1,3 +1,4 @@
+import CreateOrgModal from '@/components/Organization/CreateOrgModal';
 import {
 	CreateOrgCard,
 	OrgDetailsCard,
@@ -17,6 +18,7 @@ export default async function Page() {
 			<span className="text-primary-green-600 text-4xl font-bold p-2">
 				Choose Organization
 			</span>
+			{/* <CreateOrgModal  /> */}
 			<div className="flex-grow overflow-y-auto bg-white text-default-text">
 				{data && data?.length > 0 ? (
 					<>

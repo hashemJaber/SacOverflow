@@ -1,0 +1,54 @@
+@tailwind base;
+
+@layer base {
+	.organization-modal {
+		/* @apply fixed inset-0 z-50 overflow-y-auto; */
+
+		@apply rounded-lg bg-gray-50 shadow-lg;
+		@apply flex flex-col;
+
+		/* @apply w-[35vw] md:w-[25vw] max-w-sm mx-auto my-8; */
+		/* @apply mx my-8; */
+
+		@apply p-3;
+
+		/* Org Title Section */
+		.header-section {
+			@apply flex flex-row items-center justify-between;
+
+			.title {
+				@apply text-xl font-bold text-primary-green-two-600;
+			}
+		}
+	}
+
+	input[type='text'] {
+		/* Text */
+		@apply sm:text-sm text-primary-green-500;
+
+		/* layout */
+		@apply bg-white;
+		/* styling */
+		@apply rounded-md;
+		@apply appearance-none ring-2 ring-primary-green-400;
+
+		/* layout styling */
+		@apply mt-2 px-3 h-10 shadow-sm;
+		/* placeholder styling */
+		@apply placeholder:text-primary-green-400;
+		@apply focus:outline-none focus:ring-primary-green-700;
+		@apply transition-all duration-200 ease-in-out;
+	}
+
+	.button-section {
+		@apply flex justify-between items-center;
+
+		button {
+			@apply p-2 md:px-3 md:py-2 rounded-md text-white font-bold text-xs;
+
+			@apply bg-primary-green-300 hover:bg-primary-green-400;
+
+			@apply transition-all duration-300 ease-in-out;
+		}
+	}
+}

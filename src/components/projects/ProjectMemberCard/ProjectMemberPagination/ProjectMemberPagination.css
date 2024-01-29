@@ -1,0 +1,25 @@
+@tailwind base;
+
+@layer base {
+	.members-pagination {
+		@apply flex flex-col gap-2 justify-center;
+
+		.members {
+			@apply flex flex-col md:flex-row gap-4  items-center;
+			@apply p-4;
+		}
+	}
+	.pagination-controls {
+		@apply flex gap-2;
+		@apply w-full;
+		@apply justify-center items-center;
+	}
+
+	.no-members-text {
+		@apply text-center;
+		@apply text-primary-green-300;
+		@apply text-xl;
+		@apply font-semibold;
+		@apply p-4;
+	}
+}

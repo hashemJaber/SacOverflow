@@ -1,25 +1,24 @@
-export interface IOrganization_table {
+export interface IOrganization {
 	id: string;
 	name: string;
 	image: string;
-	created_at: string | Date;
+	created_at: Date;
 	created_by: string;
 }
 
-enum Roles {
+export enum Roles {
 	ADMIN = 'admin',
 	SUPERVISOR = 'supervisor',
 	MEMBER = 'member',
 }
-export interface Iorganization_member_table {
+export interface Iorganization_member {
 	member_id: string;
 	org_id: string;
-	// role is some sort of enum of Roles
 	role: Roles;
 	created_at: string | Date;
 }
 
-enum Status {
+export enum Status {
 	Complete = 'complete',
 	InProgress = 'in progress',
 	NeedsApproval = 'needs approval',
@@ -27,50 +26,51 @@ enum Status {
 	ToDo = 'to do',
 }
 
-export interface IProjects_table {
+export interface IProjects {
 	id: string;
 	org_id: string;
 	title: string;
-	status: Status;
 	address: string;
+	status: Status;
 	budget: number;
 	details: string;
-	due_date: string | Date;
-	start_date: string | Date;
-	completed_date: string | Date;
-	created_at: string | Date;
+	due_date: Date;
+	start_date: Date;
+	completed_date: Date;
+	created_at: Date;
+	current_spent: number;
 }
 
-export interface IProjects_member_table {
+export interface IProjects_member {
 	user_id: string;
 	project_id: string;
-	created_at: string | Date;
+	created_at: Date;
 }
 
-export interface ITasks_table {
+export interface ITasks {
 	id: string;
 	project_id: string;
 	title: string;
 	status: Status;
-	due_date: string | Date;
-	completed_date: string | Date;
-	created_at: string | Date;
+	due_date: Date;
+	completed_date: Date;
+	created_at: Date;
 }
 
-export interface ITasks_member_table {
+export interface ITasks_member {
 	user_id: string;
 	task_id: string;
 	project_id: string;
-	created_at: string | Date;
+	created_at: Date;
 }
 
-export interface IUsers_table {
+export interface IUsers {
 	id: string;
 	email: string;
 	username: string;
 	name: string;
 	image: string;
-	created_at: string | Date;
+	created_at: Date;
 }
 export interface ITestimonial {
 	id: number;

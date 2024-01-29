@@ -1,0 +1,57 @@
+@tailwind base;
+
+@layer base {
+	.single-attachment {
+		@apply flex items-center justify-between gap-4;
+
+		.attachment-icon {
+			.icon {
+				@apply fill-primary-green-300 stroke-primary-green-600;
+				@apply w-10 h-10;
+
+				&.image,
+				&.default {
+					@apply stroke-primary-green-300 fill-white;
+				}
+
+				&.csv {
+					@apply fill-white stroke-primary-green-300;
+				}
+			}
+		}
+
+		.attachment-name {
+			@apply flex flex-col gap-1;
+			@apply flex-1 w-7/12;
+
+			.title {
+				@apply text-black;
+				@apply truncate;
+				font-size: clamp(0.7rem, 0.5rem + 0.75vw, 0.9rem);
+			}
+
+			.uploader {
+				@apply text-gray-400;
+				font-size: clamp(0.5rem, 0.5rem + 0.5vw, 0.75rem);
+			}
+		}
+
+		.attachment-size {
+			@apply text-gray-400;
+			@apply md:w-3/12;
+			font-size: clamp(0.5rem, 0.75rem + 0.5vw, 0.75rem);
+		}
+
+		.attachment-download {
+			@apply text-blue-300;
+			font-size: clamp(0.5rem, 0.7rem + 0.5vw, 0.9rem);
+
+			/* effects */
+			@apply transition-colors duration-200 ease-in-out;
+
+			&:hover {
+				@apply text-blue-500;
+			}
+		}
+	}
+}

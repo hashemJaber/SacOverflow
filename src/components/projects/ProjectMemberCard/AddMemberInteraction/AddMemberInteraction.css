@@ -1,0 +1,117 @@
+@tailwind base;
+
+@layer base {
+	.add-member-btn {
+		@apply bg-primary-green-200;
+		@apply rounded-full;
+
+		@apply transition-all duration-200;
+
+		svg {
+			@apply stroke-gray-200 !important;
+			@apply stroke-2;
+		}
+
+		&:hover {
+			@apply bg-primary-green-300;
+
+			svg {
+				@apply stroke-gray-300 !important;
+			}
+		}
+	}
+
+	/* Styles for the search bar container */
+	.search-member-bar {
+		/* layout */
+		@apply relative flex items-center justify-center;
+		/* styling */
+		@apply bg-primary-green-300;
+		@apply h-7 w-8;
+		@apply rounded-2xl;
+		/* spacing */
+		@apply px-2;
+
+		/* effects */
+		transition: width 1.5s;
+
+		&.active {
+			@apply w-64;
+
+			input {
+				/* layout */
+				@apply block;
+				/* styling */
+				@apply w-full;
+			}
+		}
+
+		input {
+			/* layout */
+			/* styling */
+			@apply hidden;
+			@apply shadow-sm appearance-none;
+			@apply bg-transparent border-none;
+			@apply h-full;
+			/* typography */
+			@apply text-gray-100;
+			@apply placeholder:text-gray-100 placeholder:truncate;
+
+			font-size: clamp(0.75rem, 1.5vw, 1.25rem);
+
+			/* spacing */
+			@apply mx-4;
+			/* effects */
+			@apply focus:outline-none focus:ring-0 focus:border-none sm:text-sm truncate;
+			@apply transition-all duration-200 ease-in-out;
+			transition: width 1.5s;
+		}
+		.magnifier,
+		.add-icon {
+			/* styling */
+			@apply w-6 h-6;
+			@apply fill-none stroke-white !important;
+			/* effects */
+			@apply cursor-pointer;
+		}
+	}
+
+	/* container to show the members as a dropdown option */
+	.members-container {
+		@apply flex flex-col gap-y-1;
+		@apply absolute top-full;
+	}
+
+	/* styling for each member card (search & find component) */
+	.member-info {
+		@apply flex justify-between bg-white/80 rounded-md p-5 z-40;
+		@apply w-[250px] max-w-full hover:bg-white hover:drop-shadow-md transition-all ease-in-out duration-500;
+	}
+
+	/* Layout for Member info */
+	.member-details {
+		@apply flex flex-col items-start gap-2 truncate;
+
+		font-size: clamp(0.6rem, 0.9vw, 0.8rem);
+	}
+
+	/* styling for the member name and email */
+	.member-name,
+	.member-email {
+		@apply font-bold text-black;
+	}
+
+	/* General info icon for either displaying membership of an org */
+	.org-member-info-card {
+		/* if not invited member */
+		@apply inline-flex items-center px-2.5 py-0.5;
+		@apply rounded me-2 border border-gray-500;
+		@apply bg-primary-green-100;
+		@apply text-xs font-medium text-gray-800;
+
+		/* If an ORG Member */
+		&.member {
+			@apply bg-primary-green-400 text-primary-green-900;
+		}
+	}
+}

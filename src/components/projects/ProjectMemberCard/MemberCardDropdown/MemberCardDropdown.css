@@ -1,0 +1,26 @@
+@tailwind base;
+
+@layer base {
+	.member-card-dropdown {
+		@apply flex justify-end;
+		@apply text-primary-green-200;
+
+		.member-card-dropdown-options {
+			@apply absolute top-10;
+			/* @apply absolute top-0;
+			@apply left-1/2 transform -translate-x-1/2; */
+			@apply bg-white rounded-md p-1;
+
+			.option {
+				@apply flex items-center justify-center gap-2 p-2 rounded-md cursor-pointer;
+				@apply text-gray-400;
+				/* @apply text-center; */
+				@apply transition-colors duration-200;
+
+				&:hover {
+					@apply bg-primary-green-100;
+				}
+			}
+		}
+	}
+}

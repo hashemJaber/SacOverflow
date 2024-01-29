@@ -1,4 +1,5 @@
 'use client';
+import { getCookie } from '@/lib/actions/client';
 
 import './MemberSearch.css';
 import { createSupbaseClient } from '@/lib/supabase/client';
@@ -174,20 +175,11 @@ export default function FormInput() {
 	);
 }
 
-function getCookie(name: string): string {
-	'use client';
-	const value = `; ${window.document.cookie}`;
-	const parts = value.split(`; ${name}=`);
-	if (parts.length === 2) {
-		return parts.pop()?.split(';').shift() as string;
-	}
-	return '';
-}
 /**
  * Function to render member info when user is searching.
- * @returns
+ * @returns JSX.Element Component for member indicating if they member of org.
  */
-const SearchMemberCard = ({
+export const SearchMemberCard = ({
 	name,
 	email,
 	userId,

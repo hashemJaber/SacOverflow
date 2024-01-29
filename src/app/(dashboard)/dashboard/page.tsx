@@ -18,7 +18,7 @@ import {
 	getUserInformation,
 } from '@/lib/actions';
 import { cookies } from 'next/headers';
-import { IOrganization_table } from '@/types/database.interface';
+import { IOrganization } from '@/types/database.interface';
 import { redirect } from 'next/navigation';
 
 const DashboardPage = async () => {
@@ -46,7 +46,7 @@ const DashboardPage = async () => {
 		redirect('/projects');
 	}
 
-	const orgInfo: IOrganization_table = await getOrganizationInformation(
+	const orgInfo: IOrganization = await getOrganizationInformation(
 		org as string,
 	);
 

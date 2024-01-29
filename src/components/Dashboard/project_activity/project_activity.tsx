@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-const ProjectActivity = () => {
+const ProjectActivity = ({ className }: { className?: string }) => {
 	const [currentMonth, setCurrentMonth] = useState('Mar'); // Default month
 
 	const monthlyActivities = {
@@ -208,7 +208,11 @@ const ProjectActivity = () => {
 	};
 
 	return (
-		<div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+		<div
+			className={`max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg ${
+				className ? ` ${className}` : ''
+			}`}
+		>
 			<div className="overflow-x-auto">
 				<table className="min-w-full table-auto rounded-lg">
 					<thead className="bg-gray-200 rounded-t-lg">
